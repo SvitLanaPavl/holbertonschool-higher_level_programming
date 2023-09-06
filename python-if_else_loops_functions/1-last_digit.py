@@ -9,6 +9,8 @@ greater = "and is greater than 5"
 zero = "and is 0"
 less = "and is less than 6 and not 0"
 
+if number < 0:
+    last = -last
 if last > 5:
     print("Last digit of {} is {} {}".format(number, last, greater))
 elif last == 0:
