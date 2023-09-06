@@ -6,8 +6,8 @@ greater = "and is greater than 5"
 zero = "and is 0"
 less = "and is less than 6 and not 0"
 if last > 5:
-    print(f"Last digit of {number} is {last} {greater}")
+    print("Last digit of", number, "is", last, greater)
 elif last == 0:
-   print(f"Last digit of {number} is {last} {zero}")
+   print("Last digit of", number, "is", last, zero)
 else:
-    print(f"Last digit of {number} is {last} {less}") 
+    print("Last digit of", number, "is", last, less) 
