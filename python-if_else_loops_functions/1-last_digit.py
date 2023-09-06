@@ -12,6 +12,6 @@ less = "and is less than 6 and not 0"
 if last > 5:
     print("Last digit of {} is {} {}".format(number, last, greater))
 elif last == 0:
-   print("Last digit of {} is {} {}".format(number, last, zero))
+    print("Last digit of {} is {} {}".format(number, last, zero))
 else:
     print("Last digit of {} is {} {}".format(number, last, less))
