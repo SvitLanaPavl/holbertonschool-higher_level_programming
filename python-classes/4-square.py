@@ -6,6 +6,10 @@ class Square:
     """It represents a square."""
     __size = None
 
+    def __init__(self, size=0):
+        """Initializing the size"""
+        self.__size = size
+
     @property
     def size(self):
         """Get the size of the square"""
