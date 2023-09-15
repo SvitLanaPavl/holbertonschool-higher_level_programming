@@ -7,7 +7,7 @@ class Square:
 
     def __init__(self, size=0, position=(0, 0)):
         """Initialization of size and position
-        
+
         Args:
         size(int): the size of the new square
         position(int, int): the position of the new square
@@ -51,6 +51,8 @@ class Square:
         """Prints in stdout the square with the character #"""
         if self.__size == 0:
             print()
+        elif self.__position is None:
+            raise TypeError("position must be a tuple of 2 positive integers")
         else:
             for y in range(self.__position[1]):
                 print()
