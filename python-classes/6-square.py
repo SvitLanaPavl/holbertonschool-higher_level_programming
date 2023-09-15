@@ -43,13 +43,13 @@ class Square:
         if all(isinstance(elem, int) for elem in value):
             raise TypeError("position must be a tuple of 2 positive integers")
         if not all(elem >= 0 for elem in value):
-           raise TypeError("position must be a tuple of 2 positive integers") 
+            raise TypeError("position must be a tuple of 2 positive integers")
         else:
             self.__position = value
 
     def area(self):
         """Returning the current square area"""
-        return self.__size * self.__size
+        return self.__size ** 2
 
     def my_print(self):
         """Prints in stdout the square with the character #"""
