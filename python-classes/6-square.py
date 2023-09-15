@@ -21,7 +21,7 @@ class Square:
         return self.__size
 
     @size.setter
-    def size(self, value):
+    def size(self, value=0):
         """Setting the attribute size"""
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
@@ -41,7 +41,7 @@ class Square:
         if not isinstance(value, tuple):
             raise TypeError("position must be a tuple of 2 positive integers")
         elif len(value) != 2:
-           raise TypeError("position must be a tuple of 2 positive integers") 
+            raise TypeError("position must be a tuple of 2 positive integers")
         elif not all(isinstance(elem, int) for elem in value):
             raise TypeError("position must be a tuple of 2 positive integers")
         elif not all(elem >= 0 for elem in value):
