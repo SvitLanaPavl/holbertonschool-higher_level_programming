@@ -1,0 +1,80 @@
+#2-matrix_divided.py
+
+=============================================
+Function that divides all elements of matrix:
+=============================================
+
+The function takes two arguments 'matrix' and 'div' as input and returns a
+new matrix in which every element of the list of lists of the 'matrix' argument
+is divided by the argument 'div'
+
+===========
+Parameters:
+===========
+
+'matrix' - a list of lists of integers or floats
+'div' - the number to divide by
+
+=======
+Return:
+=======
+
+A new matrix. All elements of the matrix should be 
+divided by div, rounded to 2 decimal places
+
+=======
+Raises:
+=======
+
+TypeError: 
+    - matrix must be a list of lists of integers
+    - each row must have the same size
+    - the argument to divide by must be a number (integer or float)
+
+ZeroDivisionError:
+    - cannot divide by zero
+
+===========
+How to use:
+===========
+
+>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+>>> matrix = [
+... [1, 2, 3],
+... [4, 5, 6]
+... ]
+>>> print(matrix_divided(matrix, 3))
+[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+>>> print(matrix)
+[[1, 2, 3], [4, 5, 6]]
+>>> matrix = [
+... [1, '7', 3], 
+... [3, 5, 6]
+... ]
+>>> print(matrix_divided(matrix, 3))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/holbertonschool-higher_level_programming/python-test_driven_development/2-matrix_divided.py", line 16, in matrix_divided
+    raise TypeError(type_error)
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+>>> matrix = [
+... [1, 2, 3],
+... [4, 5, 6]
+... ]
+>>> print(matrix_divided(matrix, 0))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/holbertonschool-higher_level_programming/python-test_driven_development/2-matrix_divided.py", line 20, in matrix_divided
+    raise ZeroDivisionError("division by zero")
+ZeroDivisionError: division by zero
+>>> matrix = [
+... [1, 2, 3],
+... [4, 5, 6]
+... ]
+>>> print(matrix_divided(matrix, '3'))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/holbertonschool-higher_level_programming/python-test_driven_development/2-matrix_divided.py", line 26, in matrix_divided
+    raise TypeError("div must be a number")
+TypeError: div must be a number
