@@ -52,3 +52,10 @@ Traceback (most recent call last):
   File "/holbertonschool-higher_level_programming/python-test_driven_development/3-say_my_name.py", line 9, in say_my_name
     raise TypeError("first_name must be a string")
 TypeError: first_name must be a string
+
+>>> say_my_name("Jack", None)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/holbertonschool-higher_level_programming/python-test_driven_development/3-say_my_name.py", line 11, in say_my_name
+    raise TypeError("last_name must be a string")
+TypeError: last_name must be a string
