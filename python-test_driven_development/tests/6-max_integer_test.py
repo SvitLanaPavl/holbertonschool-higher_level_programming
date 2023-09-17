@@ -36,5 +36,10 @@ class TestMaxInteger(unittest.TestCase):
         number"""
         self.assertEqual(max_integer([1, 2, 3.1]), 3.1)
 
+    def test_unordered_numbers(self):
+        """Tests that the function returns the largest
+        element in an unordered list"""
+        self.assertEqual(max_integer([1, 3, 2], 3))
+
 if __name__ == "__main__":
     unittest.main()
