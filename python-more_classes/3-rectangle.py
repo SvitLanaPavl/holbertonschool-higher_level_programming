@@ -65,7 +65,7 @@ class Rectangle:
                 rectangle_str += "#"
             rectangle_str += "\n"
         return rectangle_str[:-1]
-    
+
     def __print__(self):
         """Prints rectangle to the console"""
         print(self)
