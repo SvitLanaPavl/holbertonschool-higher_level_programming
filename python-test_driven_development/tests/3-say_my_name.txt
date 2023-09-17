@@ -31,8 +31,8 @@ How to use:
 >>> say_my_name("Walter", "White")
 My name is Walter White
 
->>> say_my_name("Bob")
-My name is Bob
+>>> say_my_name("Holberton", "School")
+My name is Holberton School
 
 >>> say_my_name(12, "White")
 Traceback (most recent call last):
@@ -45,3 +45,10 @@ TypeError: first_name must be a string
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+>>> say_my_name(None, "Green")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/holbertonschool-higher_level_programming/python-test_driven_development/3-say_my_name.py", line 9, in say_my_name
+    raise TypeError("first_name must be a string")
+TypeError: first_name must be a string
