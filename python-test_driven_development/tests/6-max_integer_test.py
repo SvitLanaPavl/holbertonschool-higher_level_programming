@@ -29,7 +29,12 @@ class TestMaxInteger(unittest.TestCase):
         """Tests that the function raises a TypeError when
         the list contains non numeric elements"""
         with self.assertRaises(TypeError):
-            max_integer(["a", "b", "c"])
+            max_integer([1, "2", 3])
+
+    def test_floats(self):
+        """Tests that the function returns the largest float
+        number"""
+        self.assertEqual(max_integer([1, 2, 3.1]), 3.1)
 
 if __name__ == "__main__":
     unittest.main()
