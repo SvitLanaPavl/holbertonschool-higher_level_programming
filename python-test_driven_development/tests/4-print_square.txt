@@ -1,0 +1,61 @@
+#4-print_square.py
+
+==================================================
+Function that prints a square with the character #
+==================================================
+
+Parameters:
+            - size: size length of the square
+            - must be an integer
+            - must be greater than 0
+
+Raises:
+        - TypeError: size must be an integer
+        - ValueError: size must be greater than or equal to zero
+
+===========
+How to use:
+===========
+
+>>> print_square = __import__('4-print_square').print_square
+>>> print_square(4)
+####
+####
+####
+####
+
+>>> print_square(10)
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+
+>>> print_square(0)
+
+>>> print_square(1)
+#
+
+>>> print_square(-1)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/holbertonschool-higher_level_programming/python-test_driven_development/4-print_square.py", line 10, in print_square
+    raise ValueError("size must be >= 0")
+ValueError: size must be >= 0
+
+>>> print_square("Hi")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/holbertonschool-higher_level_programming/python-test_driven_development/4-print_square.py", line 8, in print_square
+    raise TypeError("size must be an integer")
+TypeError: size must be an integer
+
+>>> print_square()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: print_square() missing 1 required positional argument: 'size'
