@@ -1,0 +1,41 @@
+#5-text_indentation.py
+
+========================================================================
+Function that prints a text with two new lines after specific characters
+========================================================================
+
+Function that prints a text with 2 new lines after each of these characters: . ? and :
+There should be no space at the beginning or at the end of each printed line
+
+Parameters:
+            - text
+
+Raises:
+        - TypeError: text argument should be a string
+
+===========
+How to use:
+===========
+
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+>>> text_indentation("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quonam modo? Non autem hoc: igitur ne illud quidem.")
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+Quonam modo?
+
+Non autem hoc:
+
+igitur ne illud quidem.
+
+>>> text_indentation()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+>>> text_indentation(25)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/holbertonschool-higher_level_programming/python-test_driven_development/5-text_indentation.py", line 8, in text_indentation
+    raise TypeError("text must be a string")
+TypeError: text must be a string
