@@ -5,6 +5,8 @@ How to use:
 ===========
 
 >>> MyList = __import__('1-my_list').MyList
+
+* Appending elements to my_list and printing the result
 >>> my_list = MyList()
 >>> my_list.append(1)
 >>> my_list.append(4)
@@ -18,3 +20,21 @@ How to use:
 >>> my_list.print_sorted()
 >>> print(my_list)
 [1, 2, 3, 4, 5]
+
+* The list is empty
+my_list = MyList()
+>>> my_list = []
+>>> print(my_list)
+[]
+
+* The list consists of negative values
+my_list = MyList()
+>>> my_list.append(-1)
+>>> my_list.append(-2)
+>>> my_list.append(-5)
+>>> my_list.append(-7)
+>>> print(my_list)
+[-1, -2, -5, -7]
+>>> my_list.print_sorted()
+[-7, -5, -2, -1]
+
