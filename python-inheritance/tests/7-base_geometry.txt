@@ -4,7 +4,7 @@
 How to use:
 ===========
 
-*initialization
+* Initialization
 
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 >>> bg = BaseGeometry()
@@ -16,6 +16,10 @@ Traceback (most recent call last):
   File "/holbertonschool-higher_level_programming/python-inheritance/7-base_geometry.py", line 10, in area
     raise Exception("area() is not implemented")
 Exception: area() is not implemented
+
+* Printing integer_validator info
+>>> print(bg.integer_validator)
+<bound method BaseGeometry.integer_validator of <7-base_geometry.BaseGeometry object at 0x7f4744794f70>>
 
 * Test the integer validator with the valid integer value
 >>> bg.integer_validator("my_int", 12)
@@ -61,6 +65,14 @@ Exception: area() is not implemented
 ... 
 [TypeError] distance must be an integer
 
+* Test the integer validator method with an invalid value (list of one element)
+>>> try:
+...     bg.integer_validator("distance", [1])
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+... 
+[TypeError] distance must be an integer
+
 * Test the integer validator method with an invalid value (list)
 >>> try:
 ...     bg.integer_validator("distance", [1, 2, 3])
@@ -69,7 +81,23 @@ Exception: area() is not implemented
 ... 
 [TypeError] distance must be an integer
 
-* Test the integer validator method with an invalid value (list)
+* Test the integer validator method with an invalid value (empty tuple)
+>>> try:
+...     bg.integer_validator("distance", ())
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+... 
+[TypeError] distance must be an integer
+
+* Test the integer validator method with an invalid value (tuple of one element)
+>>> try:
+...     bg.integer_validator("distance", (1, 2, 3))
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+... 
+[TypeError] distance must be an integer
+
+* Test the integer validator method with an invalid value (tuple)
 >>> try:
 ...     bg.integer_validator("distance", (1, 2, 3))
 ... except Exception as e:
