@@ -43,6 +43,7 @@ TypeError: list expected at most 1 argument, got 2
 ['Holberton', 'School']
 
 * appending elements to my_list and printing the result
+>>> my_list = MyList()
 >>> my_list.append(1)
 >>> my_list.append(4)
 >>> my_list.append(2)
