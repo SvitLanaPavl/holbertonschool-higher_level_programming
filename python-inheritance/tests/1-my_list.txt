@@ -4,7 +4,8 @@
 How to use:
 ===========
 
->>> MyList = __import__('1-my_list').MyList
+>>> my_list = __import__('1-my_list').MyList
+
 
 * Appending elements to my_list and printing the result
 >>> my_list = MyList()
