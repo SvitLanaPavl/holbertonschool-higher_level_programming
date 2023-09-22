@@ -18,8 +18,10 @@ How to use:
 [1, 4, 2, 3, 5]
 
 >>> my_list.print_sorted()
->>> print(my_list)
 [1, 2, 3, 4, 5]
+
+>>> print(my_list)
+[1, 4, 2, 3, 5]
 
 * The list is empty
 my_list = MyList()
@@ -37,4 +39,3 @@ my_list = MyList()
 [-1, -2, -5, -7]
 >>> my_list.print_sorted()
 [-7, -5, -2, -1]
-
