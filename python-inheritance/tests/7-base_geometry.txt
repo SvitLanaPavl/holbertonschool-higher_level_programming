@@ -150,3 +150,11 @@ TypeError: area() takes 1 positional argument but 2 were given
 ...     print("[{}] {}".format(e.__class__.__name__, e))
 ... 
 [TypeError] {'distance': 1} must be an integer
+
+* Test the integer validator with an invalid value (function)
+>>> try:
+...     bg.integer_validator("my_int", func(0, 0))
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+... 
+[NameError] name 'func' is not defined
