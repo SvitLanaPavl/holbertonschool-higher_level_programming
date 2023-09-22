@@ -17,10 +17,6 @@ Traceback (most recent call last):
     raise Exception("area() is not implemented")
 Exception: area() is not implemented
 
-* Printing integer_validator info
->>> print(bg.integer_validator)
-<bound method BaseGeometry.integer_validator of <7-base_geometry.BaseGeometry object at 0x7f4744794f70>>
-
 * Test the integer validator with the valid integer value
 >>> bg.integer_validator("my_int", 12)
 >>> bg.integer_validator("width", 89)
