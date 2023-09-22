@@ -9,6 +9,14 @@ How to use:
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 >>> bg = BaseGeometry()
 
+* Testing the area method
+>>> bg.area()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/holbertonschool-higher_level_programming/python-inheritance/7-base_geometry.py", line 10, in area
+    raise Exception("area() is not implemented")
+Exception: area() is not implemented
+
 * Test the integer validator with the valid integer value
 >>> bg.integer_validator("my_int", 12)
 >>> bg.integer_validator("width", 89)
@@ -36,3 +44,35 @@ How to use:
 ...     print("[{}] {}".format(e.__class__.__name__, e))
 ... 
 [ValueError] distance must be greater than 0
+
+* Test the integer validator method with an invalid value (None)
+>>> try:
+...     bg.integer_validator("distance", None)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+... 
+[TypeError] distance must be an integer
+
+* Test the integer validator method with an invalid value (empty list)
+>>> try:
+...     bg.integer_validator("distance", [])
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+... 
+[TypeError] distance must be an integer
+
+* Test the integer validator method with an invalid value (list)
+>>> try:
+...     bg.integer_validator("distance", [1, 2, 3])
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+... 
+[TypeError] distance must be an integer_validator
+
+* Test the integer validator method with an invalid value (list)
+>>> try:
+...     bg.integer_validator("distance", (1, 2, 3))
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+... 
+[TypeError] distance must be an integer
