@@ -100,3 +100,10 @@ Exception: area() is not implemented
 ...     print("[{}] {}".format(e.__class__.__name__, e))
 ... 
 [TypeError] distance must be an integer
+
+* Test the integer validator method with an invalid value (boolean)
+>>> try:
+...     bg.integer_validator("distance", True)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+... 
