@@ -19,6 +19,12 @@ Traceback (most recent call last):
     raise Exception("area() is not implemented")
 Exception: area() is not implemented
 
+* Testing arguments in the area method
+>>> bg.area(1)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: area() takes 1 positional argument but 2 were given
+
 * Test the integer validator with the valid integer value
 >>> bg.integer_validator("my_int", 12)
 >>> bg.integer_validator("width", 89)
@@ -26,6 +32,14 @@ Exception: area() is not implemented
 * Test the integer validator with an invalid value (string)
 >>> try:
 ...     bg.integer_validator("name", "John")
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+... 
+[TypeError] name must be an integer
+
+* Test the integer validator with an invalid value (float)
+>>> try:
+...     bg.integer_validator("name", 1.5)
 ... except Exception as e:
 ...     print("[{}] {}".format(e.__class__.__name__, e))
 ... 
