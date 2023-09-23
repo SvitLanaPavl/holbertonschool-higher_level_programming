@@ -28,6 +28,7 @@ TypeError: area() takes 1 positional argument but 2 were given
 * Test the integer validator with the valid integer value
 >>> bg.integer_validator("my_int", 12)
 >>> bg.integer_validator("width", 89)
+>>> bg.integer_validator(1, 1)
 
 * Try an invalid number of positional arguents
 >>> bg.integer_validator(12)
