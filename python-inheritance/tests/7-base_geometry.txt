@@ -5,7 +5,6 @@ How to use:
 ===========
 
 * Initialization
-
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 >>> bg = BaseGeometry()
 >>> type(bg)
@@ -128,11 +127,7 @@ Traceback (most recent call last):
 TypeError: distance must be an integer
 
 * Test the integer validator method with an invalid value (dict)
->>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
->>> bg = BaseGeometry()
->>> try:
-...     bg.integer_validator("distance", {1, 2, 3})
-... except Exception as e:
-...     print("[{}] {}".format(e.__class__.__name__, e))
-... 
-[TypeError] distance must be an integer
+>>> bg.integer_validator("distance", {1, 2, 3})
+Traceback (most recent call last):
+...
+TypeError: distance must be an integer
