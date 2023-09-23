@@ -29,6 +29,13 @@ TypeError: area() takes 1 positional argument but 2 were given
 >>> bg.integer_validator("my_int", 12)
 >>> bg.integer_validator("width", 89)
 
+* Try an invalid syntax
+>>> bg.integer_validator(, 12)
+  File "<stdin>", line 1
+    bg.integer_validator(, 12)
+                         ^
+SyntaxError: invalid syntax
+
 * Test the integer validator with an invalid number of arguments
 >>> try:
 ...     bg.integer_validator("name", 1, 2)
