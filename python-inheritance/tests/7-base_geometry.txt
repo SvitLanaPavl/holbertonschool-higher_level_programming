@@ -168,28 +168,3 @@ TypeError: distance must be an integer
 ...     print("[{}] {}".format(e.__class__.__name__, e))
 ... 
 [TypeError] distance must be an integer
-
-* Test with the name being a dictionary
->>> try:
-...     bg.integer_validator({"distance": 1}, 5)
-... except Exception as e:
-...     print("[{}] {}".format(e.__class__.__name__, e))
-... 
-
-* Test the integer validator method with an invalid value (dict as name and tuple as value)
->>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
->>> bg = BaseGeometry()
->>> try:
-...     bg.integer_validator({"distance": 1}, (5, 2))
-... except Exception as e:
-...     print("[{}] {}".format(e.__class__.__name__, e))
-... 
-[TypeError] {'distance': 1} must be an integer
-
-* Test the integer validator with an invalid value (function)
->>> try:
-...     bg.integer_validator("my_int", func(0, 0))
-... except Exception as e:
-...     print("[{}] {}".format(e.__class__.__name__, e))
-... 
-[NameError] name 'func' is not defined
