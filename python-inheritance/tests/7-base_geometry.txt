@@ -37,6 +37,14 @@ TypeError: area() takes 1 positional argument but 2 were given
 ... 
 [TypeError] integer_validator() takes 3 positional arguments but 4 were given
 
+* Testing with only one argument
+>>> try:
+...     bg.integer_validator("name")
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+... 
+[TypeError] integer_validator() missing 1 required positional argument: 'value'
+
 * Test the integer validator with an invalid value (string)
 >>> try:
 ...     bg.integer_validator("name", "John")
