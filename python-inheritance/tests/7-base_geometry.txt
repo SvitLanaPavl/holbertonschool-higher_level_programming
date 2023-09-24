@@ -26,8 +26,7 @@ Exception: area() is not implemented
 >>> bg.integer_validator()
 Traceback (most recent call last):
 ...
-TypeError: integer_validator() missing 2 required positional
-arguments: 'name' and 'value'
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
 * Invalid syntax
 >>> bg.integer_validator(, 12)
@@ -83,7 +82,7 @@ Traceback (most recent call last):
 ...
 TypeError: distance must be an integer
 
-* Test the integer validator method with an invalid value (list of one element)
+* Test the integer validator method with an invalid value
 >>> bg.integer_validator("distance", [1])
 Traceback (most recent call last):
 ...
