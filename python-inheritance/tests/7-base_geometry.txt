@@ -20,6 +20,7 @@ Exception: area() is not implemented
 >>> bg.integer_validator("my_int", 12)
 >>> bg.integer_validator("width", 89)
 >>> bg.integer_validator(1, 1)
+>>> bg.integer_validator([0, 0], 1)
 
 * Invalid number of positional arguments
 >>> bg.integer_validator()
@@ -137,3 +138,9 @@ TypeError: distance must be an integer
 Traceback (most recent call last):
 ...
 ValueError: [0, 0] must be greater than 0
+
+* Another
+>>> bg.integer_validator([0, 0], [0, 0])
+Traceback (most recent call last):
+...
+TypeError: [0, 0] must be an integer
