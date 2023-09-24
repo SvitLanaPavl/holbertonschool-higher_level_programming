@@ -120,6 +120,9 @@ TypeError: distance must be an integer
 
 * Test the integer validator method with an invalid value (boolean)
 >>> bg.integer_validator("distance", True)
+Traceback (most recent call last):
+...
+TypeError: distance must be an integer
 
 * Test the integer validator with an invalid type of one element
 >>> bg.integer_validator("distance", {1})
