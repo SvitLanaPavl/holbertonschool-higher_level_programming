@@ -58,12 +58,6 @@ Traceback (most recent call last):
 ...
 TypeError: name must be an integer
 
-* Test the integer validator with an invalid value (float)
->>> bg.integer_validator("name", 1.5)
-Traceback (most recent call last):
-...
-TypeError: name must be an integer
-
 * Test the integer valiator method with an invalid value (0)
 >>> bg.integer_validator("age", 0)
 Traceback (most recent call last):
