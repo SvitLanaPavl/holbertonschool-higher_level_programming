@@ -11,7 +11,7 @@ if __name__ == '__main__':
 
     try:
         list = load_from_json_file("add_item.json")
-    except:
+    except FileNotFoundError:
         list = []
     for arg in sys.argv[1:]:
         list.append(arg)
