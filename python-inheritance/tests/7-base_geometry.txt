@@ -1,54 +1,83 @@
-===================================
-Doctesting for 7-base_geometry.py
-===================================
-General Purpose of Class: BaseGeometry
-Creates a base class to build off.
-Usage examples:
-	>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
-	>>> base_geo = BaseGeometry()
-	>>> type(base_geo)
-	<class '7-base_geometry.BaseGeometry'>
-Area should raise an Exception due to not being implemented:
-	>>> base_geo.area()
-	Traceback (most recent call last):
-	Exception: area() is not implemented
-integer_validator(...) makes sure that the parameter is an integer.
-If value is a valid integer nothing happens
-	>>> base_geo.integer_validator("valid number", 1)
-If value is not an integer, a TypeError is raised:
-	>>> base_geo.integer_validator("invalid number", "number")
-	Traceback (most recent call last):
-	TypeError: invalid number must be an integer
-If value is less than 0 a ValueError is raised:
-	>>> base_geo.integer_validator("invalid", -1)
-	Traceback (most recent call last):
-	ValueError: invalid must be greater than 0
-	>>> base_geo.integer_validator("It", 0)
-	Traceback (most recent call last):
-	ValueError: It must be greater than 0
-	>>> base_geo.integer_validator("still", True)
-	Traceback (most recent call last):
-	TypeError: still must be an integer
-	>>> base_geo.integer_validator("even tuples", (1,))
-	Traceback (most recent call last):
-	TypeError: even tuples must be an integer
-	>>> base_geo.integer_validator("I said it", [1])
-	Traceback (most recent call last):
-	TypeError: I said it must be an integer
-	>>> base_geo.integer_validator("again, it", {1, 2})
-	Traceback (most recent call last):
-	TypeError: again, it must be an integer
-	>>> base_geo.integer_validator("one last time, it", None)
-	Traceback (most recent call last):
-	TypeError: one last time, it must be an integer
-Both name and value must be passed to integer_validator:
-	>>> base_geo.integer_validator()
-	Traceback (most recent call last):
-	TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
-	>>> base_geo.integer_validator("Nothing")
-	Traceback (most recent call last):
-	TypeError: integer_validator() missing 1 required positional argument: 'value'
-No arguements can be passed to BaseGeometry:
-	>>> base_geo = BaseGeometry(None)
-	Traceback (most recent call last):
-	TypeError: BaseGeometry() takes no arguments
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+>>> bg = BaseGeometry()
+>>> type(bg)
+<class '7-base_geometry.BaseGeometry'>
+
+>>> bg.area()
+Traceback (most recent call last):
+...
+Exception: area() is not implemented
+
+>>> bg.integer_validator("my_int", 12)
+
+>>> bg.integer_validator()
+Traceback (most recent call last):
+...
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+>>> bg.integer_validator("name")
+Traceback (most recent call last):
+...
+TypeError: integer_validator() missing 1 required positional argument: 'value'
+
+>> bg.integer_validator("name", "John")
+Traceback (most recent call last):
+...
+TypeError: name must be an integer
+
+>>> bg.integer_validator("age", 0)
+Traceback (most recent call last):
+...
+ValueError: age must be greater than 0
+
+>>> bg.integer_validator("distance", -4)
+Traceback (most recent call last):
+...
+ValueError: distance must be greater than 0
+
+>>> bg.integer_validator("distance", None)
+Traceback (most recent call last):
+...
+TypeError: distance must be an integer
+
+>>> bg.integer_validator("distance", [])
+Traceback (most recent call last):
+...
+TypeError: distance must be an integer
+
+>>> bg.integer_validator("distance", [1])
+Traceback (most recent call last):
+...
+TypeError: distance must be an integer
+
+>>> bg.integer_validator("distance", ())
+Traceback (most recent call last):
+...
+TypeError: distance must be an integer
+
+>>> bg.integer_validator("distance", (1,))
+Traceback (most recent call last):
+...
+TypeError: distance must be an integer
+
+>>> bg.integer_validator("distance", (1, 2, 3))
+Traceback (most recent call last):
+...
+TypeError: distance must be an integer
+
+>>> bg.integer_validator("distance", True)
+Traceback (most recent call last):
+...
+TypeError: distance must be an integer
+
+>>> bg.integer_validator("distance", {1, 2})
+Traceback (most recent call last):
+...
+TypeError: distance must be an integer
+
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+>>> bg = BaseGeometry(None)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: BaseGeometry() takes no arguments
+
