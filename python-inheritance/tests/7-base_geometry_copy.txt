@@ -1,108 +1,142 @@
+# 7-base_geometry.py
+
+===========
+How to use:
+===========
+
+* Initialization
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 >>> bg = BaseGeometry()
 >>> type(bg)
 <class '7-base_geometry.BaseGeometry'>
 
+* Testing the area method
 >>> bg.area()
 Traceback (most recent call last):
 ...
 Exception: area() is not implemented
 
+* Test the integer validator with the valid integer value
 >>> bg.integer_validator("my_int", 12)
 >>> bg.integer_validator("width", 89)
 >>> bg.integer_validator(1, 1)
 >>> bg.integer_validator([0, 0], 1)
 
+* Invalid number of positional arguments
 >>> bg.integer_validator()
 Traceback (most recent call last):
 ...
 TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
+* Invalid syntax
 >>> bg.integer_validator(, 12)
 Traceback (most recent call last):
 ...
 SyntaxError: invalid syntax
 
+* Try an invalid number of positional arguents
 >>> bg.integer_validator(12)
 Traceback (most recent call last):
 ...
 TypeError: integer_validator() missing 1 required positional argument: 'value'
 
+* Test the integer validator with an invalid number of arguments
 >>> bg.integer_validator("name", 1, 2)
 Traceback (most recent call last):
 ...
 TypeError: integer_validator() takes 3 positional arguments but 4 were given
 
+* Testing with only one string argument
 >>> bg.integer_validator("name")
 Traceback (most recent call last):
 ...
 TypeError: integer_validator() missing 1 required positional argument: 'value'
 
+* Test the integer validator with an invalid value (string)
 >> bg.integer_validator("name", "John")
 Traceback (most recent call last):
 ...
 TypeError: name must be an integer
 
+* Test the integer valiator method with an invalid value (0)
 >>> bg.integer_validator("age", 0)
 Traceback (most recent call last):
 ...
 ValueError: age must be greater than 0
 
+* Test the integer validator method with an invalid value (negative)
 >>> bg.integer_validator("distance", -4)
 Traceback (most recent call last):
 ...
 ValueError: distance must be greater than 0
 
+* Test the integer validator method with an invalid value (None)
 >>> bg.integer_validator("distance", None)
 Traceback (most recent call last):
 ...
 TypeError: distance must be an integer
 
+* Test the integer validator method with an invalid value (empty list)
 >>> bg.integer_validator("distance", [])
 Traceback (most recent call last):
 ...
 TypeError: distance must be an integer
 
+* Test the integer validator method with an invalid value
+>>> bg.integer_validator("distance", [1])
+Traceback (most recent call last):
+...
+TypeError: distance must be an integer
+
+* Test the integer validator method with an invalid value (list)
 >>> bg.integer_validator("distance", [1, 2, 3])
 Traceback (most recent call last):
 ...
 TypeError: distance must be an integer
 
+* Test the integer validator method with an invalid value (empty tuple)
 >>> bg.integer_validator("distance", ())
 Traceback (most recent call last):
 ...
 TypeError: distance must be an integer
 
+* Test the integer validator method with an invalid value (tuple of one element)
 >>> bg.integer_validator("distance", (1,))
 Traceback (most recent call last):
 ...
 TypeError: distance must be an integer
 
+* Test the integer validator method with an invalid value (tuple)
 >>> bg.integer_validator("distance", (1, 2, 3))
 Traceback (most recent call last):
 ...
 TypeError: distance must be an integer
 
+* Test the integer validator method with an invalid value (boolean)
 >>> bg.integer_validator("distance", True)
 Traceback (most recent call last):
 ...
 TypeError: distance must be an integer
 
+* Test the integer validator with an invalid type of one element
 >>> bg.integer_validator("distance", {1})
 Traceback (most recent call last):
 ...
 TypeError: distance must be an integer
 
+* Another invalid case
 >>> bg.integer_validator([0, 0], 0)
 Traceback (most recent call last):
 ...
 ValueError: [0, 0] must be greater than 0
 
+* Another
 >>> bg.integer_validator([0, 0], [0, 0])
 Traceback (most recent call last):
 ...
 TypeError: [0, 0] must be an integer
 
+* Class takes no arguments
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 >>> bg = BaseGeometry(None)
 Traceback (most recent call last):
