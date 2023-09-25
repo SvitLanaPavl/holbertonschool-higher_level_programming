@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-"""Geometry module"""
+"""Define a class "BaseGeometry"."""
 
 
 class BaseGeometry:
-    """Base geometry class"""
+    """Geometry class"""
 
     def area(self):
         """public instance method that raises exception"""
