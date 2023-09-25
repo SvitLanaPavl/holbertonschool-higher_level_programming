@@ -135,3 +135,10 @@ ValueError: [0, 0] must be greater than 0
 Traceback (most recent call last):
 ...
 TypeError: [0, 0] must be an integer
+
+* Class takes no arguments
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+>>> bg = BaseGeometry(None)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: BaseGeometry() takes no arguments
