@@ -12,4 +12,4 @@ class Square(Rectangle):
     def __str__(self):
         """Str method"""
         return "[Square] ({}) {}/{} - {}".\
-            format(id, self.x, self.y, self.width)
+            format(self.id, self.x, self.y, self.width)
