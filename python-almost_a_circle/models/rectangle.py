@@ -73,5 +73,10 @@ class Rectangle(Base):
         self.__y = y
 
     def area(self):
-        """Public method"""
+        """Public area method"""
         return self.__height * self.__width
+
+    def display(self):
+        """Public display method"""
+        for i in range(self.__height):
+            print("#" * self.__width)
