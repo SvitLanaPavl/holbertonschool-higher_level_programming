@@ -94,7 +94,7 @@ class Rectangle(Base):
         """Assigning an argument to each attribute
         Args:
             *args - the list of arguments
-            **kwargs - a dictionary of key-value arguments 
+            **kwargs - a dictionary of key-value arguments
         """
         num_args = len(args)
         if num_args >= 1:
