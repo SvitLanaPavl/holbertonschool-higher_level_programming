@@ -9,6 +9,19 @@ class Square(Rectangle):
         """The constructor"""
         super().__init__(size, size, x, y, id)
 
+    @property
+    def size(self):
+        """Retrieving size"""
+        return self.width
+
+    @size.setter
+    def size(self, value):
+        """Size setter"""
+        if not isinstance(value, int):
+            raise TypeError("width must be an integer")
+        self.width = value
+        self.height = value
+
     def __str__(self):
         """Str method"""
         return "[Square] ({}) {}/{} - {}".\
