@@ -74,16 +74,16 @@ class Rectangle(Base):
 
     def area(self):
         """Public area method"""
-        return self.__height * self.__width
+        return self.height * self.width
 
     def display(self):
         """Public display method"""
-        for y in range(self.__y):
+        for y in range(self.y):
             print("")
-        for h in range(self.__height):
-            for x in range(self.__x):
+        for h in range(self.height):
+            for x in range(self.x):
                 print(" ", end="")
-            print("#" * self.__width)
+            print("#" * self.width)
 
     def __str__(self):
         """Str method"""
@@ -101,13 +101,13 @@ class Rectangle(Base):
             if num_args >= 1:
                 self.id = args[0]
             elif num_args >= 2:
-                self.__width = args[1]
+                self.width = args[1]
             elif num_args >= 3:
-                self.__height = args[2]
+                self.height = args[2]
             elif num_args >= 4:
-                self.__x = args[3]
+                self.x = args[3]
             elif num_args == 5:
-                self.__y = args[4]
+                self.y = args[4]
         elif kwargs and kwargs != 0:
             for key, value in kwargs.items():
                 setattr(self, key, value)
