@@ -96,19 +96,11 @@ class Rectangle(Base):
             *args - the list of arguments
             **kwargs - a dictionary of key-value arguments
         """
-        num_args = len(args)
-        if num_args and num_args != 0:
-            if num_args >= 1:
-                self.id = args[0]
-            elif num_args >= 2:
-                self.width = args[1]
-            elif num_args >= 3:
-                self.height = args[2]
-            elif num_args >= 4:
-                self.x = args[3]
-            elif num_args == 5:
-                self.y = args[4]
-        elif kwargs and kwargs != 0:
+        if args:
+            arg_names = ['id', 'width', 'height', 'x', 'y']
+            for i, arg in enumerate(args):
+                setattr(self, arg_names[i], arg)
+        else:
             for key, value in kwargs.items():
                 setattr(self, key, value)
 
