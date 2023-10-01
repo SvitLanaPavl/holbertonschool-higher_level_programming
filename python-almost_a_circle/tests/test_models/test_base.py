@@ -34,6 +34,8 @@ class TestBase(unittest.TestCase):
         '''string id''' 
         b1 = Base("Holberton")
         self.assertEqual(b1.id, "Holberton")
+        b2 = Base("1")
+        self.assertEqual(b2.id, "1")
 
     def test_arg(self):
         '''many args'''
