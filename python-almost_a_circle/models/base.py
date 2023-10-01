@@ -18,7 +18,7 @@ class Base:
     @staticmethod
     def to_json_string(list_dictionaries):
         """JSON string represenation through serialization
-        
+
         Args:
             list_dictionaries: a list of dictionaries
         """
@@ -33,7 +33,8 @@ class Base:
             list_objs = []
         filename = cls.__name__ + ".json"
         with open(filename, "w") as f:
-            json_string = cls.to_json_string([obj.to_dictionary() for obj in list_objs])
+            json_string = cls.\
+                to_json_string([obj.to_dictionary() for obj in list_objs])
             f.write(json_string)
 
     @staticmethod
