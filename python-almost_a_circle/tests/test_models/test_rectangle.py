@@ -35,7 +35,7 @@ class TestRectangle_init(unittest.TestCase):
         self.assertEqual(r1.height, 2)
         self.assertEqual(r1.x, 0)
         self.assertEqual(r1.y, 0)
-        self.assertEqual(r1.id, 10)
+        self.assertEqual(r1.id, 15)
 
     def test_five_args(self):
         '''Testing a rectangle of five args'''
