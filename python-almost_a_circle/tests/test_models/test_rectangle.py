@@ -2,6 +2,8 @@ import unittest
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
+import sys
+from io import StringIO
 """Unittest classes"""
 
 
@@ -33,7 +35,7 @@ class TestRectangle_init(unittest.TestCase):
         self.assertEqual(r1.height, 2)
         self.assertEqual(r1.x, 0)
         self.assertEqual(r1.y, 0)
-        self.assertEqual(r1.id, 5)
+        self.assertEqual(r1.id, 10)
 
     def test_five_args(self):
         '''Testing a rectangle of five args'''
@@ -67,15 +69,6 @@ class TestRectangle_init(unittest.TestCase):
         r = Rectangle(10, 2)
         with self.assertRaises(AttributeError):
             r.__y
-
-    def test_area(self):
-        '''Test area'''
-        r1 = Rectangle(3, 2)
-        self.assertEqual(r1.area(), 6)
-        r2 = Rectangle(2, 10)
-        self.assertEqual(r2.area(), 20)
-        r3 = Rectangle(8, 7, 0, 0, 12)
-        self.assertEqual(r3.area(), 56)
 
     def test_display(self):
         '''Test display'''
@@ -399,3 +392,76 @@ class TestRectangle_values_y(unittest.TestCase):
         '''data type value errors'''
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
             Rectangle(10, 2, 1, {"a": 1}, 12)
+
+class TestRectangle_area(unittest.TestCase):
+    '''Test rectangle area'''
+    def test_area_regular(self):
+        '''Test area'''
+        rc = Rectangle(3, 2)
+        self.assertEqual(rc.area(), 6)
+        rc = Rectangle(2, 10)
+        self.assertEqual(rc.area(), 20)
+        rc = Rectangle(8, 7, 0, 0, 12)
+        self.assertEqual(rc.area(), 56)
+
+    def test_area_change(self):
+        '''test area when an argument changes'''
+        rec = Rectangle(3, 2)
+        self.assertEqual(rec.area(), 6)
+        rec.width = 2
+        self.assertEqual(rec.area(), 4)
+        rec.height = 4
+        self.assertEqual(rec.area(), 8)
+
+    def test_area_1arg(self):
+        '''test area for 1 arg'''
+        rec1 = Rectangle(3, 2)
+        with self.assertRaises(TypeError):
+            rec1.area(3)
+
+class TestRectangle_display(unittest.TestCase):
+    '''Test rectangle display'''
+    def setUp(self):
+        self.saved_stdout = sys.stdout
+        self.captured_output = StringIO()
+        sys.stdout = self.captured_output
+
+    def tearDown(self):
+        '''Restore the original sys.stdout'''
+        sys.stdout = self.saved_stdout
+        self.captured_output.close()
+
+    def test_display_regular(self):
+        '''test display'''
+        rct = Rectangle(4, 4)
+        exp_output = "####\n####\n####\n####\n"
+        rct.display()
+        self.assertEqual(self.captured_output.getvalue(), exp_output)
+    
+    def test_display_x(self):
+        '''test display with x'''
+        rect = Rectangle(4, 4)
+        rect.x = 4
+        exp_output = "    ####\n    ####\n    ####\n    ####\n"
+        rect.display()
+        self.assertEqual(self.captured_output.getvalue(), exp_output)
+
+    def test_display_y(self):
+        '''test display with y'''
+        rect = Rectangle(4, 4)
+        rect.x = 4
+        rect.y = 2
+        exp_output = "\n\n    ####\n    ####\n    ####\n    ####\n"
+        rect.display()
+        self.assertEqual(self.captured_output.getvalue(), exp_output)
+
+class TestRectangle_string(unittest.TestCase):
+    '''test string representation'''
+    def test_str(self):
+        '''test str representation'''
+        rect1 = Rectangle(4, 6, 2, 1, 12)
+        exp_output = "[Rectangle] (12) 2/1 - 4/6"
+        self.assertEqual(rect1.__str__(), exp_output)
+
+if __name__ == "__main__":
+    unittest.main()

@@ -11,19 +11,24 @@ class TestBase(unittest.TestCase):
 
     def test_id(self):
         '''Testing the __init__ method id'''
-        b1 = Base()
+        b1 = Base(1)
         self.assertEqual(b1.id, 1)
-    
-    def test_several_id(self):
-        '''Testing several id's''' 
-        b1 = Base(None)
-        self.assertEqual(b1.id, 2)
+
+    def test_num_obj(self):
+        '''test number of obj'''
         b2 = Base()
-        self.assertEqual(b2.id, 3)
-        b3 = Base(12)
-        self.assertEqual(b3.id, 12)
+        self.assertEqual(b2.id, 2)
+        b3 = Base()
+        self.assertEqual(b3.id, 3)
         b4 = Base()
         self.assertEqual(b4.id, 4)
+        b5 = Base(12)
+        self.assertEqual(b5.id, 12)
+
+    def test_None(self):
+        '''Test none'''
+        b = Base(None)
+        self.assertEqual(b.id, 1)
 
     def test_negative_id(self):
         '''negative id'''
@@ -40,4 +45,10 @@ class TestBase(unittest.TestCase):
     def test_arg(self):
         '''many args'''
         with self.assertRaises(TypeError):
-            b1 = Base(1, 1)
+            Base(1, 1)
+
+    def test_private_access(self):
+        '''test accessing private attributes'''
+        b = Base()
+        with self.assertRaises(AttributeError):
+            b.__nb_objects
