@@ -75,12 +75,14 @@ class Rectangle(Base):
 
     def display(self):
         """Public display method"""
-        for y in range(self.y):
-            print("")
-        for h in range(self.height):
-            for x in range(self.x):
+        for y in range(self.__y):
+            print()
+        for h in range(self.__height):
+            for x in range(self.__x):
                 print(" ", end="")
-            print("#" * self.width)
+            for w in range(self.__width):
+                print("{}".format("#"), end="")
+            print()
 
     def __str__(self):
         """Str method"""
@@ -93,13 +95,38 @@ class Rectangle(Base):
             *args - the list of arguments
             **kwargs - a dictionary of key-value arguments
         """
-        if args:
-            arg_names = ['id', 'width', 'height', 'x', 'y']
-            for i, arg in enumerate(args):
-                setattr(self, arg_names[i], arg)
-        else:
+        if args and len(args) != 0:
+            i = 0
+            for arg in args:
+                if i == 0:
+                    if arg is None:
+                        self.__init__(self.width, self.height, self.x, self.y)
+                    else:
+                        self.id = arg
+                elif i == 1:
+                    self.width = arg
+                elif i == 2:
+                    self.height = arg
+                elif i == 3:
+                    self.x = arg
+                elif i == 4:
+                    self.y = arg
+                i += 1
+        elif kwargs and len(kwargs) != 0:
             for key, value in kwargs.items():
-                setattr(self, key, value)
+                if key == "id":
+                    if value is None:
+                        self.__init__(self.width, self.height, self.x, self.y)
+                    else:
+                        self.id = value
+                elif key == "width":
+                    self.width = value
+                elif key == "height":
+                    self.height = value
+                elif key == "x":
+                    self.x = value
+                elif key == "y":
+                    self.y = value
 
     def to_dictionary(self):
         """Dictionary representation of rectangle"""
