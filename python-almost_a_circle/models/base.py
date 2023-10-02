@@ -33,9 +33,8 @@ class Base:
             list_objs = []
         filename = cls.__name__ + ".json"
         with open(filename, "w") as f:
-            json_string = cls.\
-                to_json_string([obj.to_dictionary() for obj in list_objs])
-            f.write(json_string)
+            json_string = [obj.to_dictionary() for obj in list_objs]
+            f.write(Base.to_json_string(json_string))
 
     @staticmethod
     def from_json_string(json_string):
@@ -51,7 +50,7 @@ class Base:
             if cls.__name__ == "Rectangle":
                 instance = cls(3, 3)
             else:
-                instance(3)
+                instance = cls(3)
             instance.update(**dictionary)
             return instance
 
@@ -60,8 +59,8 @@ class Base:
         """Returns a list of instances"""
         filename = cls.__name__ + ".json"
         try:
-            with open(filename, "w") as f:
+            with open(filename, "r") as f:
                 json_string = f.read()
                 return cls.from_json_string(json_string)
-        except FileNotFoundError:
+        except IOError:
             return []
