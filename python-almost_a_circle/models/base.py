@@ -17,11 +17,7 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
-        """JSON string represenation through serialization
-
-        Args:
-            list_dictionaries: a list of dictionaries
-        """
+        """JSON string represenation through serialization"""
         if list_dictionaries is None or list_dictionaries == []:
             return "[]"
         return json.dumps(list_dictionaries)
@@ -49,8 +45,8 @@ class Base:
         if dictionary:
             if cls.__name__ == "Rectangle":
                 instance = cls(3, 3)
-            else:
-                instance = cls(3)
+            if cls.__name__ == "Square":
+                instance = instance(3)
             instance.update(**dictionary)
             return instance
 
