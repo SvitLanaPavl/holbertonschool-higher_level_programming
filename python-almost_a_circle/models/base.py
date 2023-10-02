@@ -4,11 +4,11 @@ import json
 
 
 class Base:
-    """Base class"""
+    """Base class repr"""
     __nb_objects = 0
 
     def __init__(self, id=None):
-        """The constructor"""
+        """The constructor method"""
         if id is not None:
             self.id = id
         else:
@@ -22,7 +22,7 @@ class Base:
         Args:
             list_dictionaries: a list of dictionaries
         """
-        if not list_dictionaries:
+        if list_dictionaries is None or list_dictionaries == "[]":
             return "[]"
         return json.dumps(list_dictionaries)
 
@@ -40,7 +40,7 @@ class Base:
     @staticmethod
     def from_json_string(json_string):
         """Returns the list of the json string representation"""
-        if not json_string:
+        if json_string is None or json_string == "[]":
             return []
         return json.loads(json_string)
 
