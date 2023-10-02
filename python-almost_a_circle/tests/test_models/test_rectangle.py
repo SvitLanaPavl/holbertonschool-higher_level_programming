@@ -511,7 +511,7 @@ class TestRectangle_update(unittest.TestCase):
     def update_call(self):
         '''calling update no args'''
         rc = Rectangle(10, 10, 10, 10, 10)
-        exp_output = "[Rectangle] (10) 10/10 10/10"
+        exp_output = "[Rectangle] (10) 10/10 - 10/10"
         rc.update()
         self.assertEqual(rc.__str__(), exp_output)
 
@@ -519,49 +519,49 @@ class TestRectangle_update(unittest.TestCase):
         '''update one arg'''
         rec = Rectangle(10, 10, 10, 10, 10)
         rec.update(89)
-        exp_output = "[Rectangle] (89) 10/10 10/10"
+        exp_output = "[Rectangle] (89) 10/10 - 10/10"
         self.assertEqual(rec.__str__(), exp_output)
 
     def update_2args(self):
         '''update two args'''
         recn = Rectangle(10, 10, 10, 10, 10)
         recn.update(89, 2)
-        exp_output = "[Rectangle] (89) 10/10 2/10"
+        exp_output = "[Rectangle] (89) 10/10 - 2/10"
         self.assertEqual(recn.__str__(), exp_output)
 
     def update_3args(self):
         '''update three args'''
         recn = Rectangle(10, 10, 10, 10, 10)
         recn.update(89, 2, 3)
-        exp_output = "[Rectangle] (89) 10/10 2/3"
+        exp_output = "[Rectangle] (89) 10/10 - 2/3"
         self.assertEqual(recn.__str__(), exp_output)
 
     def update_4args(self):
         '''update four args'''
         recn = Rectangle(10, 10, 10, 10, 10)
         recn.update(89, 2, 3, 4)
-        exp_output = "[Rectangle] (89) 4/10 2/3"
+        exp_output = "[Rectangle] (89) 4/10 - 2/3"
         self.assertEqual(recn.__str__(), exp_output)
 
     def update_5args(self):
         '''update five args'''
         recn = Rectangle(10, 10, 10, 10, 10)
         recn.update(89, 2, 3, 4, 5)
-        exp_output = "[Rectangle] (89) 4/5 2/3"
+        exp_output = "[Rectangle] (89) 4/5 - 2/3"
         self.assertEqual(recn.__str__(), exp_output)
 
     def update_6args(self):
         '''update six args'''
         recn = Rectangle(10, 10, 10, 10, 10)
         recn.update(89, 2, 3, 4, 5, 6)
-        exp_output = "[Rectangle] (89) 4/5 2/3"
+        exp_output = "[Rectangle] (89) 4/5 - 2/3"
         self.assertEqual(recn.__str__(), exp_output)
 
     def update_6args(self):
         '''update six args'''
         recn = Rectangle(10, 10, 10, 10, 10)
         recn.update(None)
-        exp_output = "[Rectangle] ({}) 4/5 2/3".format(recn.id)
+        exp_output = "[Rectangle] ({}) 4/5 - 2/3".format(recn.id)
         self.assertEqual(recn.__str__(), exp_output)
 
     def update_args_twice(self):
@@ -569,7 +569,7 @@ class TestRectangle_update(unittest.TestCase):
         recn = Rectangle(10, 10, 10, 10, 10)
         recn.update(89, 2, 3, 4, 5)
         recn.update(89, 3, 3, 3, 3)
-        exp_output = "[Rectangle] (89) 3/3 3/3"
+        exp_output = "[Rectangle] (89) 3/3 - 3/3"
         self.assertEqual(recn.__str__(), exp_output)
 
     def update_args_invalid_w(self):
@@ -650,28 +650,28 @@ class TestRectangle_update_kwargs(unittest.TestCase):
         '''calling update height'''
         rc = Rectangle(10, 10, 10, 10, 10)
         rc.update(height=1)
-        exp_output = "[Rectangle] (10) 10/10 10/1"
+        exp_output = "[Rectangle] (10) 10/10 - 10/1"
         self.assertEqual(rc.__str__(), exp_output)
 
     def update_kwargs_width_x(self):
         '''calling update width and x'''
         rc = Rectangle(10, 10, 10, 10, 10)
         rc.update(width=1, x=2)
-        exp_output = "[Rectangle] (10) 2/10 1/10"
+        exp_output = "[Rectangle] (10) 2/10 - 1/10"
         self.assertEqual(rc.__str__(), exp_output)
 
     def update_kwargs_width_y_x_id(self):
         '''calling update y width x id'''
         rc = Rectangle(10, 10, 10, 10, 10)
         rc.update(y=1, width=2, x=3, id=89)
-        exp_output = "[Rectangle] (89) 3/11 2/10"
+        exp_output = "[Rectangle] (89) 3/11 - 2/10"
         self.assertEqual(rc.__str__(), exp_output)
 
     def update_kwargs_width_y_x_height(self):
         '''calling update y width x height'''
         rc = Rectangle(10, 10, 10, 10, 10)
         rc.update(x=1, height=2, y=3, width=4)
-        exp_output = "[Rectangle] ({}) 1/3 4/2".format(rc.id)
+        exp_output = "[Rectangle] ({}) 1/3 - 4/2".format(rc.id)
         self.assertEqual(rc.__str__(), exp_output)
 
     def update_kwargs_invalid_w(self):
@@ -722,12 +722,6 @@ class TestRectangle_update_kwargs(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "x must be >= 0"):
             recn.update(x=-2)
 
-    def update_kwargs_zero_x(self):
-        '''update with an invalid kwarg'''
-        recn = Rectangle(10, 10, 10, 10, 10)
-        with self.assertRaisesRegex(ValueError, "x must be > 0"):
-            recn.update(x=0)
-
     def update_kwargs_invalid_y(self):
         '''update with an invalid kwarg'''
         recn = Rectangle(10, 10, 10, 10, 10)
@@ -740,31 +734,25 @@ class TestRectangle_update_kwargs(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "y must be >= 0"):
             recn.update(y=-2)
 
-    def update_kwargs_zero_y(self):
-        '''update with an invalid kwarg'''
-        recn = Rectangle(10, 10, 10, 10, 10)
-        with self.assertRaisesRegex(ValueError, "y must be > 0"):
-            recn.update(y=0)
-
     def update_kwargs_and_args(self):
         '''update with kwargs and args'''
         recn = Rectangle(10, 10, 10, 10, 10)
         recn.update(89, 2, 3, x=4, y=5)
-        exp_output = "[Rectangle] (89) 4/5 2/3"
+        exp_output = "[Rectangle] (89) 4/5 - 2/3"
         self.assertEqual(recn.__str__(), exp_output)
 
     def update_kwargs_and_args_wrkeys(self):
         '''update with wrong keys'''
         recn = Rectangle(10, 10, 10, 10, 10)
         recn.update(89, a=2, b=3, c=4, d=5)
-        exp_output = "[Rectangle] (10) 10/10 10/10"
+        exp_output = "[Rectangle] (10) 10/10 - 10/10"
         self.assertEqual(recn.__str__(), exp_output)
 
     def update_kwargs_and_args_smwrkeys(self):
         '''update with some wrong keys'''
         recn = Rectangle(10, 10, 10, 10, 10)
         recn.update(89, a=2, b=3, x=4, y=5)
-        exp_output = "[Rectangle] (10) 4/5 10/10"
+        exp_output = "[Rectangle] (10) 4/5 - 10/10"
         self.assertEqual(recn.__str__(), exp_output)
 
 if __name__ == "__main__":
