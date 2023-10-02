@@ -437,6 +437,13 @@ class TestRectangle_display(unittest.TestCase):
         exp_output = "####\n####\n####\n####\n"
         rct.display()
         self.assertEqual(self.captured_output.getvalue(), exp_output)
+
+    def test_display_regular_full(self):
+        '''test display'''
+        rct = Rectangle(4, 4, 2, 2, 9)
+        exp_output = "\n\n  ####\n  ####\n  ####\n  ####\n"
+        rct.display()
+        self.assertEqual(self.captured_output.getvalue(), exp_output)
     
     def test_display_x(self):
         '''test display with x'''
@@ -455,13 +462,98 @@ class TestRectangle_display(unittest.TestCase):
         rect.display()
         self.assertEqual(self.captured_output.getvalue(), exp_output)
 
+    def test_display_wr_args(self):
+        '''wrong num of args'''
+        rectn = Rectangle(4, 6, 2, 1, 12)
+        with self.assertRaises(TypeError):
+            rectn.display(1)
+
 class TestRectangle_string(unittest.TestCase):
     '''test string representation'''
-    def test_str(self):
+    def test_str_full(self):
         '''test str representation'''
         rect1 = Rectangle(4, 6, 2, 1, 12)
-        exp_output = "[Rectangle] (12) 2/1 - 4/6"
+        exp_output = "[Rectangle] ({}) 2/1 - 4/6".format(rect1.id)
         self.assertEqual(rect1.__str__(), exp_output)
+
+    def test_str_2arg(self):
+        '''test string 2 args given'''
+        rect2 = Rectangle(2, 2)
+        exp_output = "[Rectangle] ({}) 0/0 - 2/2".format(rect2.id)
+        self.assertEqual(rect2.__str__(), exp_output)
+
+    def test_str_3arg(self):
+        '''test string 3 args'''
+        rect3 = Rectangle(2, 2, 1)
+        exp_output = "[Rectangle] ({}) 1/0 - 2/2".format(rect3.id)
+        self.assertEqual(rect3.__str__(), exp_output)
+
+    def test_str_4arg(self):
+        '''test string 4 args'''
+        rect3 = Rectangle(2, 2, 1, 1)
+        exp_output = "[Rectangle] ({}) 1/1 - 2/2".format(rect3.id)
+        self.assertEqual(rect3.__str__(), exp_output)
+
+    def test_changed_values(self):
+        '''update values'''
+        rectn = Rectangle(4, 6, 2, 1, 12)
+        rectn.width = 5
+        rectn.height = 7
+        rectn.x = 3
+        rectn.y = 2
+        exp_output = "[Rectangle] ({}) 3/2 - 5/7".format(rectn.id)
+        self.assertEqual(rectn.__str__(), exp_output)
+
+    def test_wrong_num_args(self):
+        '''wrong arg num'''
+        rectn = Rectangle(4, 6, 2, 1, 12)
+        with self.assertRaises(TypeError):
+            rectn.__str__(1)
+
+class TestRectangle_update(unittest.TestCase):
+    '''test update function'''
+
+    def update_call(self):
+        '''calling update no args'''
+        rc = Rectangle(10, 10, 10, 10, 10)
+        exp_output = "[Rectangle] (10) 10/10 10/10"
+        rc.update()
+        self.assertEqual(rc.__str__(), exp_output)
+
+    def update_1arg(self):
+        '''update one arg'''
+        rec = Rectangle(10, 10, 10, 10, 10)
+        rec.update(89)
+        exp_output = "[Rectangle] (89) 10/10 10/10"
+        self.assertEqual(rec.__str__(), exp_output)
+
+    def update_2args(self):
+        '''update two args'''
+        recn = Rectangle(10, 10, 10, 10, 10)
+        recn.update(89, 2)
+        exp_output = "[Rectangle] (89) 10/10 2/10"
+        self.assertEqual(recn.__str__(), exp_output)
+
+    def update_3args(self):
+        '''update three args'''
+        recn = Rectangle(10, 10, 10, 10, 10)
+        recn.update(89, 2, 3)
+        exp_output = "[Rectangle] (89) 10/10 2/3"
+        self.assertEqual(recn.__str__(), exp_output)
+
+    def update_4args(self):
+        '''update four args'''
+        recn = Rectangle(10, 10, 10, 10, 10)
+        recn.update(89, 2, 3, 4)
+        exp_output = "[Rectangle] (89) 4/10 2/3"
+        self.assertEqual(recn.__str__(), exp_output)
+
+    def update_5args(self):
+        '''update five args'''
+        recn = Rectangle(10, 10, 10, 10, 10)
+        recn.update(89, 2, 3, 4, 5)
+        exp_output = "[Rectangle] (89) 4/5 2/3"
+        self.assertEqual(recn.__str__(), exp_output)
 
 if __name__ == "__main__":
     unittest.main()
