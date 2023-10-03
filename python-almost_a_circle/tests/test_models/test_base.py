@@ -111,12 +111,14 @@ class TestBase_to_json_string(unittest.TestCase):
     def test_regular_list(self):
         '''to json testing'''
         Base.__Base__nb_objects = 0
-        rec1 = {"id": 10, "width": 10, "height": 10, "x": 10, "y": 10}
-        rec2 = {"id": 5, "width": 5, "height": 5, "x": 5, "y": 5}
-        result_str = Base.to_json_string([rec1, rec2])
+        input = [
+            {"id": 10, "width": 10, "height": 10, "x": 10, "y": 10},
+            {"id": 5, "width": 5, "height": 5, "x": 5, "y": 5}
+        ]
+        result_str = Base.to_json_string(input)
         self.assertTrue(type(result_str) is str)
         result_loads = json.loads(result_str)
-        self.assertEqual(result_loads, [rec1, rec2])
+        self.assertEqual(result_loads, input)
 
 class TestBase_from_json_string(unittest.TestCase):
     '''Test from json string'''
@@ -138,7 +140,50 @@ class TestBase_from_json_string(unittest.TestCase):
         with self.assertRaises(TypeError):
             Base.from_json_string([], 0)
 
-    def regular_Case(self):
+    def regular_case_type_rect(self):
         '''test from str'''
         input = [{'id': 10, 'width': 10, 'height': 10, 'x': 10, 'y': 10}]
         json_input = Rectangle.to_json_string(input)
+        json_output = Rectangle.from_json_string(json_input)
+        self.assertEqual(list, type(json_output))
+
+    def regular_case_rect(self):
+        '''test from str'''
+        input = [{'id': 10, 'width': 10, 'height': 10, 'x': 10, 'y': 10}]
+        json_input = Rectangle.to_json_string(input)
+        json_output = Rectangle.from_json_string(json_input)
+        self.assertEqual(input, json_output)
+
+    def regular_two_dict_rect(self):
+        '''two dict'''
+        input = [
+            {'id': 10, 'width': 10, 'height': 10, 'x': 10, 'y': 10},
+            {'id': 5, 'width': 5, 'height': 5, 'x': 5, 'y': 5}
+            ]
+        json_input = Rectangle.to_json_string(input)
+        json_output = Rectangle.from_json_string(json_input)
+        self.assertEqual(input, json_output)
+
+    def regular_case_type_sq(self):
+        '''test from str'''
+        input = [{'id': 10, 'size': 10, 'x': 10, 'y': 10}]
+        json_input = Square.to_json_string(input)
+        json_output = Square.from_json_string(json_input)
+        self.assertEqual(list, type(json_output))
+
+    def regular_case_sq(self):
+        '''test from str'''
+        input = [{'id': 10, 'square': 10, 'x': 10, 'y': 10}]
+        json_input = Square.to_json_string(input)
+        json_output = Square.from_json_string(json_input)
+        self.assertEqual(input, json_output)
+
+    def regular_two_dict_rect(self):
+        '''two dict'''
+        input = [
+            {'id': 10, 'size': 10, 'x': 10, 'y': 10},
+            {'id': 5, 'size': 5, 'x': 5, 'y': 5}
+            ]
+        json_input = Square.to_json_string(input)
+        json_output = Square.from_json_string(json_input)
+        self.assertEqual(input, json_output)
