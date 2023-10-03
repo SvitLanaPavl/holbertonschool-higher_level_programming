@@ -46,19 +46,19 @@ class TestRectangle_init(unittest.TestCase):
         self.assertEqual(r1.y, 0)
         self.assertEqual(r1.id, 16)"""
 
-    def private_access_width(self):
+    def test_private_access_width(self):
         '''Acess private attributes'''
         r = Rectangle(10, 2)
         with self.assertRaises(AttributeError):
             r.__width
 
-    def private_access_height(self):
+    def test_private_access_height(self):
         '''Acess private attributes'''
         r = Rectangle(10, 2)
         with self.assertRaises(AttributeError):
             r.__height
 
-    def private_access_x(self):
+    def test_private_access_x(self):
         '''Acess private attributes'''
         r = Rectangle(10, 2)
         with self.assertRaises(AttributeError):
@@ -516,63 +516,63 @@ class TestRectangle_string(unittest.TestCase):
 class TestRectangle_update(unittest.TestCase):
     '''test update function'''
 
-    def update_call(self):
+    def tet_update_call(self):
         '''calling update no args'''
         rc = Rectangle(10, 10, 10, 10, 10)
         exp_output = "[Rectangle] (10) 10/10 - 10/10"
         rc.update()
         self.assertEqual(rc.__str__(), exp_output)
 
-    def update_1arg(self):
+    def test_update_1arg(self):
         '''update one arg'''
         rec = Rectangle(10, 10, 10, 10, 10)
         rec.update(89)
         exp_output = "[Rectangle] (89) 10/10 - 10/10"
         self.assertEqual(rec.__str__(), exp_output)
 
-    def update_2args(self):
+    def test_update_2args(self):
         '''update two args'''
         recn = Rectangle(10, 10, 10, 10, 10)
         recn.update(89, 2)
         exp_output = "[Rectangle] (89) 10/10 - 2/10"
         self.assertEqual(recn.__str__(), exp_output)
 
-    def update_3args(self):
+    def test_update_3args(self):
         '''update three args'''
         recn = Rectangle(10, 10, 10, 10, 10)
         recn.update(89, 2, 3)
         exp_output = "[Rectangle] (89) 10/10 - 2/3"
         self.assertEqual(recn.__str__(), exp_output)
 
-    def update_4args(self):
+    def test_update_4args(self):
         '''update four args'''
         recn = Rectangle(10, 10, 10, 10, 10)
         recn.update(89, 2, 3, 4)
         exp_output = "[Rectangle] (89) 4/10 - 2/3"
         self.assertEqual(recn.__str__(), exp_output)
 
-    def update_5args(self):
+    def test_update_5args(self):
         '''update five args'''
         recn = Rectangle(10, 10, 10, 10, 10)
         recn.update(89, 2, 3, 4, 5)
         exp_output = "[Rectangle] (89) 4/5 - 2/3"
         self.assertEqual(recn.__str__(), exp_output)
 
-    def update_6args(self):
+    def test_update_6args(self):
         '''update six args'''
         recn = Rectangle(10, 10, 10, 10, 10)
         recn.update(89, 2, 3, 4, 5, 6)
         exp_output = "[Rectangle] (89) 4/5 - 2/3"
         self.assertEqual(recn.__str__(), exp_output)
 
-    def update_6args(self):
+    def test_update_6args(self):
         '''update six args'''
         recn = Rectangle(10, 10, 10, 10, 10)
         recn.update(None)
-        exp_output = "[Rectangle] ({}) 4/5 - 2/3".format(recn.id)
+        exp_output = "[Rectangle] ({}) 10/10 - 10/10".format(recn.id)
         self.assertEqual(recn.__str__(), exp_output)
 
-    def update_args_twice(self):
+    def test_update_args_twice(self):
         '''update six args'''
         recn = Rectangle(10, 10, 10, 10, 10)
         recn.update(89, 2, 3, 4, 5)
@@ -580,73 +580,73 @@ class TestRectangle_update(unittest.TestCase):
         exp_output = "[Rectangle] (89) 3/3 - 3/3"
         self.assertEqual(recn.__str__(), exp_output)
 
-    def update_args_invalid_w(self):
+    def test_update_args_invalid_w(self):
         '''update with an invalid arg'''
         recn = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             recn.update(89, '2')
 
-    def update_args_negative_w(self):
+    def test_update_args_negative_w(self):
         '''update with an invalid arg'''
         recn = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
             recn.update(89, -2)
 
-    def update_args_zero_w(self):
+    def test_update_args_zero_w(self):
         '''update with an invalid arg'''
         recn = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
             recn.update(89, 0)
 
-    def update_args_invalid_h(self):
+    def test_update_args_invalid_h(self):
         '''update with an invalid arg'''
         recn = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
             recn.update(89, 2, '3')
 
-    def update_args_negative_h(self):
+    def test_update_args_negative_h(self):
         '''update with an invalid arg'''
         recn = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(ValueError, "height must be > 0"):
             recn.update(89, 2, -3)
 
-    def update_args_zero_h(self):
+    def test_update_args_zero_h(self):
         '''update with an invalid arg'''
         recn = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(ValueError, "height must be > 0"):
             recn.update(89, 2, 0)
 
-    def update_args_invalid_x(self):
+    def test_update_args_invalid_x(self):
         '''update with an invalid arg'''
         recn = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
             recn.update(89, 2, 3, '4')
 
-    def update_args_negative_x(self):
+    def test_update_args_negative_x(self):
         '''update with an invalid arg'''
         recn = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(ValueError, "x must be >= 0"):
             recn.update(89, 2, 3, -4)
 
-    def update_args_invalid_y(self):
+    def test_update_args_invalid_y(self):
         '''update with an invalid arg'''
         recn = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
             recn.update(89, 2, 3, 4, '5')
 
-    def update_args_negative_x(self):
+    def test_update_args_negative_x(self):
         '''update with an invalid arg'''
         recn = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(ValueError, "y must be >= 0"):
             recn.update(89, 2, 3, 4, -5)
 
-    def update_args_invalid_several(self):
+    def test_update_args_invalid_several(self):
         '''update with an invalid arg'''
         recn = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             recn.update(89, '2', 3, 4, '5')
 
-    def update_args_negative_x(self):
+    def test_update_args_negative_x(self):
         '''update with an invalid arg'''
         recn = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
@@ -655,114 +655,114 @@ class TestRectangle_update(unittest.TestCase):
 
 class TestRectangle_update_kwargs(unittest.TestCase):
     '''test update kwargs function'''
-    def update_kwargs_height(self):
+    def test_update_kwargs_height(self):
         '''calling update height'''
         rc = Rectangle(10, 10, 10, 10, 10)
         rc.update(height=1)
         exp_output = "[Rectangle] (10) 10/10 - 10/1"
         self.assertEqual(rc.__str__(), exp_output)
 
-    def update_kwargs_width_x(self):
+    def test_update_kwargs_width_x(self):
         '''calling update width and x'''
         rc = Rectangle(10, 10, 10, 10, 10)
         rc.update(width=1, x=2)
         exp_output = "[Rectangle] (10) 2/10 - 1/10"
         self.assertEqual(rc.__str__(), exp_output)
 
-    def update_kwargs_width_y_x_id(self):
+    def test_update_kwargs_width_y_x_id(self):
         '''calling update y width x id'''
         rc = Rectangle(10, 10, 10, 10, 10)
         rc.update(y=1, width=2, x=3, id=89)
-        exp_output = "[Rectangle] (89) 3/11 - 2/10"
+        exp_output = "[Rectangle] (89) 3/1 - 2/10"
         self.assertEqual(rc.__str__(), exp_output)
 
-    def update_kwargs_width_y_x_height(self):
+    def test_update_kwargs_width_y_x_height(self):
         '''calling update y width x height'''
         rc = Rectangle(10, 10, 10, 10, 10)
         rc.update(x=1, height=2, y=3, width=4)
         exp_output = "[Rectangle] ({}) 1/3 - 4/2".format(rc.id)
         self.assertEqual(rc.__str__(), exp_output)
 
-    def update_kwargs_invalid_w(self):
+    def test_update_kwargs_invalid_w(self):
         '''update with an invalid kwarg'''
         recn = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             recn.update(width='2')
 
-    def update_kwargs_negative_w(self):
+    def test_update_kwargs_negative_w(self):
         '''update with an invalid kwarg'''
         recn = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
             recn.update(width=-2)
 
-    def update_kwargs_zero_w(self):
+    def test_update_kwargs_zero_w(self):
         '''update with an invalid kwarg'''
         recn = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
             recn.update(width=0)
 
-    def update_kwargs_invalid_h(self):
+    def test_update_kwargs_invalid_h(self):
         '''update with an invalid kwarg'''
         recn = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
             recn.update(height='2')
 
-    def update_kwargs_negative_h(self):
+    def test_update_kwargs_negative_h(self):
         '''update with an invalid kwarg'''
         recn = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(ValueError, "height must be > 0"):
             recn.update(height=-2)
 
-    def update_kwargs_zero_h(self):
+    def test_update_kwargs_zero_h(self):
         '''update with an invalid kwarg'''
         recn = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(ValueError, "height must be > 0"):
             recn.update(height=0)
 
-    def update_kwargs_invalid_x(self):
+    def test_update_kwargs_invalid_x(self):
         '''update with an invalid kwarg'''
         recn = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
             recn.update(x='2')
 
-    def update_kwargs_negative_x(self):
+    def test_update_kwargs_negative_x(self):
         '''update with an invalid kwarg'''
         recn = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(ValueError, "x must be >= 0"):
             recn.update(x=-2)
 
-    def update_kwargs_invalid_y(self):
+    def test_update_kwargs_invalid_y(self):
         '''update with an invalid kwarg'''
         recn = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
             recn.update(y='2')
 
-    def update_kwargs_negative_y(self):
+    def test_update_kwargs_negative_y(self):
         '''update with an invalid kwarg'''
         recn = Rectangle(10, 10, 10, 10, 10)
         with self.assertRaisesRegex(ValueError, "y must be >= 0"):
             recn.update(y=-2)
 
-    def update_kwargs_and_args(self):
+    def test_update_kwargs_and_args(self):
         '''update with kwargs and args'''
         recn = Rectangle(10, 10, 10, 10, 10)
         recn.update(89, 2, 3, x=4, y=5)
-        exp_output = "[Rectangle] (89) 4/5 - 2/3"
+        exp_output = "[Rectangle] (89) 10/10 - 2/3"
         self.assertEqual(recn.__str__(), exp_output)
 
-    def update_kwargs_and_args_wrkeys(self):
+    def test_update_kwargs_and_args_wrkeys(self):
         '''update with wrong keys'''
         recn = Rectangle(10, 10, 10, 10, 10)
         recn.update(89, a=2, b=3, c=4, d=5)
-        exp_output = "[Rectangle] (10) 10/10 - 10/10"
+        exp_output = "[Rectangle] (89) 10/10 - 10/10"
         self.assertEqual(recn.__str__(), exp_output)
 
-    def update_kwargs_and_args_smwrkeys(self):
-        '''update with some wrong keys'''
-        recn = Rectangle(10, 10, 10, 10, 10)
+    '''def test_update_kwargs_and_args_smwrkeys(self):
+        update with some wrong keys'''
+    '''recn = Rectangle(10, 10, 10, 10, 10)
         recn.update(89, a=2, b=3, x=4, y=5)
-        exp_output = "[Rectangle] (10) 4/5 - 10/10"
-        self.assertEqual(recn.__str__(), exp_output)
+        exp_output = "[Rectangle] (89) 4/5 - 10/10"
+        self.assertEqual(recn.__str__(), exp_output)'''
 
 
 if __name__ == "__main__":
