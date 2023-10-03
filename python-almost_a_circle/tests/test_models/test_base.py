@@ -273,7 +273,7 @@ class TestBase_save_to_file(unittest.TestCase):
         Rectangle.save_to_file([rec])
         expected_length = len(json.dumps(rec.to_dictionary()))
         with open("Rectangle.json", "r") as f:
-            self.assertTrue(len(f.read) == expected_length)
+            self.assertTrue(len(f.read()) == expected_length)
 
     def save_rect(self):
         '''save one square'''
@@ -281,7 +281,7 @@ class TestBase_save_to_file(unittest.TestCase):
         Square.save_to_file([sq])
         expected_length = len(json.dumps(sq.to_dictionary()))
         with open("Square.json", "r") as f:
-            self.assertTrue(len(f.read) == expected_length)
+            self.assertTrue(len(f.read()) == expected_length)
 
     def two_rect(self):
         '''two rectangles'''
@@ -291,7 +291,7 @@ class TestBase_save_to_file(unittest.TestCase):
         expected_length = len(json.dumps(rect1.to_dictionary())) +\
             len(json.dumps(rect2.to_dictionary()))
         with open("Rectangle.json", "r") as f:
-            self.assertTrue(len(f.read) == expected_length)
+            self.assertTrue(len(f.read()) == expected_length)
 
     def two_sqr(self):
         '''two rectangles'''
@@ -301,7 +301,7 @@ class TestBase_save_to_file(unittest.TestCase):
         expected_length = len(json.dumps(sq1.to_dictionary())) +\
             len(json.dumps(sq2.to_dictionary()))
         with open("Square.json", "r") as f:
-            self.assertTrue(len(f.read) == expected_length)
+            self.assertTrue(len(f.read()) == expected_length)
 
 class TestBase_create(unittest.TestCase):
     '''testing create method'''
