@@ -10,21 +10,23 @@ import json
 class TestBase(unittest.TestCase):
     '''The subclass of the TestCase to test Base'''
 
-    def test_id(self):
+    def test_id_unique(self):
         '''Testing the __init__ method id'''
-        b1 = Base(1)
-        self.assertEqual(b1.id, 1)
+        b1 = Base(10)
+        self.assertEqual(b1.id, 10)
 
-    def test_num_obj(self):
-        '''test number of obj'''
+    def test_id_mult_obj(self):
+        b1 = Base()
         b2 = Base()
-        self.assertEqual(b2.id, 2)
         b3 = Base()
-        self.assertEqual(b3.id, 3)
-        b4 = Base()
-        self.assertEqual(b4.id, 4)
-        b5 = Base(12)
-        self.assertEqual(b5.id, 12)
+        self.assertEqual(b1.id, b3.id - 2)
+
+    def test_mix_obj(self):
+        '''test number of obj'''
+        base1 = Base()
+        base3 = Base(29)
+        base4 = Base()
+        self.assertEqual(base1.id, base4.id - 1)
 
     def test_None(self):
         '''Test none'''
@@ -83,7 +85,26 @@ class TestBase(unittest.TestCase):
         b1 = Base({2})
         self.assertEqual(b1.id, {2})
 
-    def test_arg(self):
+    def test_comple(self):
+        '''test id'''
+        b = Base(complex(10))
+        self.assertEqual(b.id, complex(10))
+
+    def froze_set(self):
+        '''test id'''
+        b = Base(frozenset({1, 2, 3}))
+        self.assertEqual(b.id, frozenset({1, 2, 3}))
+
+    def float_inf(self):
+        '''test id'''
+        b = Base(float('inf'))
+        self.assertEqual(b.id, float('inf'))
+
+    def test_nan(self):
+        b = Base(float('nan'))
+        self.assertNotEqual(b.id, float('nan'))
+
+    def test_wr_arg(self):
         '''many args'''
         with self.assertRaises(TypeError):
             Base(1, 1)
@@ -93,6 +114,14 @@ class TestBase(unittest.TestCase):
         b = Base()
         with self.assertRaises(AttributeError):
             b.__nb_objects
+        with self.assertRaises(AttributeError):
+            b.__nb_objects
+
+    def change_id(self):
+        '''cgange id'''
+        base = Base(20)
+        base.id = 15
+        self.assertEqual(base.id, 15)
 
 class TestBase_to_json_string(unittest.TestCase):
     '''Test to json string'''
@@ -178,7 +207,7 @@ class TestBase_from_json_string(unittest.TestCase):
         json_output = Square.from_json_string(json_input)
         self.assertEqual(input, json_output)
 
-    def regular_two_dict_rect(self):
+    def regular_two_dict_sq(self):
         '''two dict'''
         input = [
             {'id': 10, 'size': 10, 'x': 10, 'y': 10},
