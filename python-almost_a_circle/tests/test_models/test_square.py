@@ -573,3 +573,6 @@ class TestSquare_update_kwargs(unittest.TestCase):
         sq.update(89, b=3, x=4, y=5)
         exp_output = "[Square] (89) 4/5 - 10"
         self.assertEqual(sq.__str__(), exp_output)
+
+if __name__ == "__main__":
+    unittest.main()

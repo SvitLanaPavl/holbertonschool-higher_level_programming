@@ -323,3 +323,6 @@ class TestBase_create(unittest.TestCase):
         self.assertEqual("[Square] (4) 2/3 - 2", str(sq2))
         self.assertFalse(sq1 is sq2)
         self.assertIsNot(sq1, sq2)
+
+if __name__ == "__main__":
+    unittest.main()
