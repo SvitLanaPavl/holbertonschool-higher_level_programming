@@ -117,3 +117,28 @@ class TestBase_to_json_string(unittest.TestCase):
         self.assertTrue(type(result_str) is str)
         result_loads = json.loads(result_str)
         self.assertEqual(result_loads, [rec1, rec2])
+
+class TestBase_from_json_string(unittest.TestCase):
+    '''Test from json string'''
+    def test_none(self):
+        '''to json testing'''
+        self.assertEqual([], Base.from_json_string(None))
+
+    def test_empty(self):
+        '''to json testing'''
+        self.assertEqual([], Base.from_json_string("[]"))
+
+    def no_arg_error(self):
+        '''test for no arg'''
+        with self.assertRaises(TypeError):
+            Base.from_json_string()
+
+    def more_arg_error(self):
+        '''test for no arg'''
+        with self.assertRaises(TypeError):
+            Base.from_json_string([], 0)
+
+    def regular_Case(self):
+        '''test from str'''
+        input = [{'id': 10, 'width': 10, 'height': 10, 'x': 10, 'y': 10}]
+        json_input = Rectangle.to_json_string(input)
