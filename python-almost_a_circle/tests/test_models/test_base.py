@@ -125,6 +125,16 @@ class TestBase(unittest.TestCase):
 
 class TestBase_to_json_string(unittest.TestCase):
     '''Test to json string'''
+    def test_more_args(self):
+        '''test more args'''
+        with self.assertRaises(TypeError):
+            Base.to_json_string([], 0)
+
+    def test_no_args(self):
+        '''test more args'''
+        with self.assertRaises(TypeError):
+            Base.to_json_string()
+
     def test_empty_list(self):
         '''to json testing'''
         result = Base.to_json_string([])
