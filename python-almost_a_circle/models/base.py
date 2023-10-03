@@ -46,17 +46,21 @@ class Base:
             if cls.__name__ == "Rectangle":
                 instance = cls(3, 3)
             if cls.__name__ == "Square":
-                instance = instance(3)
+                instance = cls(3)
             instance.update(**dictionary)
             return instance
 
     @classmethod
     def load_from_file(cls):
         """Returns a list of instances"""
-        filename = cls.__name__ + ".json"
+        filename = str(cls.__name__) + ".json"
         try:
             with open(filename, "r") as f:
-                json_string = f.read()
-                return cls.from_json_string(json_string)
+                list_str = f.read()
+                list_cls = cls.from_json_string(list_str)
+                list = []
+                for i in range(len(list_cls)):
+                    list.append(cls.create(**list_cls[i]))
+                return list
         except IOError:
             return []
