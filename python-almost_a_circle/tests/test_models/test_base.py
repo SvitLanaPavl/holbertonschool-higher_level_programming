@@ -4,6 +4,7 @@ from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
 import json
+import os
 """Unittest classes"""
 
 
@@ -87,7 +88,7 @@ class TestBase(unittest.TestCase):
         b1 = Base({2})
         self.assertEqual(b1.id, {2})
 
-    def test_comple(self):
+    def test_complex(self):
         '''test id'''
         b = Base(complex(10))
         self.assertEqual(b.id, complex(10))
@@ -117,10 +118,10 @@ class TestBase(unittest.TestCase):
         with self.assertRaises(AttributeError):
             b.__nb_objects
         with self.assertRaises(AttributeError):
-            b.__nb_objects
+            b.nb_objects
 
     def change_id(self):
-        '''cgange id'''
+        '''change id'''
         base = Base(20)
         base.id = 15
         self.assertEqual(base.id, 15)
@@ -227,3 +228,98 @@ class TestBase_from_json_string(unittest.TestCase):
         json_input = Square.to_json_string(input)
         json_output = Square.from_json_string(json_input)
         self.assertEqual(input, json_output)
+
+class TestBase_save_to_file(unittest.TestCase):
+    '''save to file method test'''
+    @classmethod
+    def remove_files(self):
+        '''remove created files'''
+        try:
+            os.remove("Rectangle.json")
+        except IOError:
+            pass
+        try:
+            os.remove("Square.json")
+        except IOError:
+            pass
+
+    def test_save_empty_Rect(self):
+        '''empty list'''
+        obj_lst = []
+        Rectangle.save_to_file(obj_lst)
+        with open("Rectangle.json", "r") as f:
+            json_cont = f.read()
+        self.assertEqual(json_cont, "[]")
+
+    def test_save_empty_Sq(self):
+        '''empty file'''
+        Square.save_to_file(None)
+        with open("Square.json", "r") as f:
+            self.assertEqual(f.read(), "[]")
+
+    def test_save_noargs(self):
+        '''save to file no args'''
+        with self.assertRaises(TypeError):
+            Square.save_to_file()
+
+    def test_save_mult_args(self):
+        '''save to file no args'''
+        with self.assertRaises(TypeError):
+            Rectangle.save_to_file([], 10)    
+
+    def save_rect(self):
+        '''save one rectangle'''
+        rec = Rectangle(10, 10, 10, 10, 10)
+        Rectangle.save_to_file([rec])
+        expected_length = len(json.dumps(rec.to_dictionary()))
+        with open("Rectangle.json", "r") as f:
+            self.assertTrue(len(f.read) == expected_length)
+
+    def save_rect(self):
+        '''save one square'''
+        sq = Square(5, 5, 5, 5)
+        Square.save_to_file([sq])
+        expected_length = len(json.dumps(sq.to_dictionary()))
+        with open("Square.json", "r") as f:
+            self.assertTrue(len(f.read) == expected_length)
+
+    def two_rect(self):
+        '''two rectangles'''
+        rect1 = Rectangle(2, 3, 2, 2, 2)
+        rect2 = Rectangle(3, 4, 3, 3, 3)
+        Rectangle.save_to_file([rect1, rect2])
+        expected_length = len(json.dumps(rect1.to_dictionary())) +\
+            len(json.dumps(rect2.to_dictionary()))
+        with open("Rectangle.json", "r") as f:
+            self.assertTrue(len(f.read) == expected_length)
+
+    def two_sqr(self):
+        '''two rectangles'''
+        sq1 = Square(2, 2, 2, 2)
+        sq2 = Square(3, 3, 3, 3)
+        Square.save_to_file([sq1, sq2])
+        expected_length = len(json.dumps(sq1.to_dictionary())) +\
+            len(json.dumps(sq2.to_dictionary()))
+        with open("Square.json", "r") as f:
+            self.assertTrue(len(f.read) == expected_length)
+
+class TestBase_create(unittest.TestCase):
+    '''testing create method'''
+    def create_rect(self):
+        '''create rectangle'''
+        rec1 = Rectangle(1, 2, 3, 4, 5)
+        rec1_dict = rec1.to_dictionary()
+        rec2 = Rectangle.create(**rec1_dict)
+        self.assertEqual(str(rec1), str(rec2))
+        self.assertFalse(rec1 is rec2)
+        self.assertIsNot(rec1, rec2)
+
+    def create_sqr(self):
+        '''create rectangle'''
+        sq1 = Square(2, 2, 3, 4)
+        sq1_dict = sq1.to_dictionary()
+        sq2 = Square.create(**sq1_dict)
+        self.assertEqual("[Square] (4) 2/3 - 2", str(sq1))
+        self.assertEqual("[Square] (4) 2/3 - 2", str(sq2))
+        self.assertFalse(sq1 is sq2)
+        self.assertIsNot(sq1, sq2)
