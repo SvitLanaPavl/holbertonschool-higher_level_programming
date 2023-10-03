@@ -248,13 +248,13 @@ class TestBase_save_to_file(unittest.TestCase):
         except IOError:
             pass
 
-    '''def test_save_empty_Rect(self):
-        empty list'''
-    '''obj_lst = []
+    def test_save_empty_Rect(self):
+        '''empty list'''
+        obj_lst = []
         Rectangle.save_to_file(obj_lst)
         with open("Rectangle.json", "r") as f:
             json_cont = f.read()
-        self.assertEqual(json_cont, "[]")'''
+        self.assertEqual(json_cont, "[]")
 
     def test_save_empty_Sq(self):
         '''empty file'''
