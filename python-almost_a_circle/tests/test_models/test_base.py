@@ -9,6 +9,8 @@ import json
 
 class TestBase(unittest.TestCase):
     '''The subclass of the TestCase to test Base'''
+    def setUp(self):
+        Base._Base__nb_objects = 0
 
     def test_id_unique(self):
         '''Testing the __init__ method id'''
@@ -149,7 +151,6 @@ class TestBase_to_json_string(unittest.TestCase):
 
     def test_regular_list(self):
         '''to json testing'''
-        Base.__Base__nb_objects = 0
         input = [
             {"id": 10, "width": 10, "height": 10, "x": 10, "y": 10},
             {"id": 5, "width": 5, "height": 5, "x": 5, "y": 5}
