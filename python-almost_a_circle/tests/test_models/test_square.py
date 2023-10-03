@@ -37,7 +37,7 @@ class TestSquare_init(unittest.TestCase):
         s = Square(5, 5)
         self.assertEqual(s.size, 5)
         self.assertEqual(s.x, 5)
-        
+
     def test_three_args(self):
         '''test three args'''
         s = Square(5, 5, 5)
@@ -76,6 +76,7 @@ class TestSquare_init(unittest.TestCase):
         s = Square(5)
         with self.assertRaises(AttributeError):
             s.__y
+
 
 class TestSquare_values_width(unittest.TestCase):
     '''Test the values of the square'''
@@ -144,6 +145,7 @@ class TestSquare_values_width(unittest.TestCase):
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             Square((5,), 5, 5, 5)
 
+
 class TestSquare_values_x(unittest.TestCase):
     '''Test the values of the square'''
     def test_for_None(self):
@@ -206,6 +208,7 @@ class TestSquare_values_x(unittest.TestCase):
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
             Square(5, (5,), 5, 5)
 
+
 class TestSquare_values_y(unittest.TestCase):
     '''Test the values of the square'''
     def test_for_None(self):
@@ -267,11 +270,12 @@ class TestSquare_values_y(unittest.TestCase):
         '''data type value errors'''
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
             Square(5, 5, (5,), 5)
-    
+
     def test_for_string_several(self):
         '''data type value errors'''
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             Square("5", 5, 5, "5")
+
 
 class TestSquare_area(unittest.TestCase):
     '''Test rectangle area'''
@@ -296,6 +300,7 @@ class TestSquare_area(unittest.TestCase):
         sq = Square(5, 7, 8, 9)
         with self.assertRaises(TypeError):
             sq.area(5)
+
 
 class TestSquare_display(unittest.TestCase):
     '''Test square display'''
@@ -322,7 +327,7 @@ class TestSquare_display(unittest.TestCase):
         exp_output = "\n\n\n  ###\n  ###\n  ###\n"
         sqr.display()
         self.assertEqual(self.captured_output.getvalue(), exp_output)
-    
+
     def test_display_x(self):
         '''test display with x'''
         sqr = Square(2, 3, 4, 7)
@@ -345,6 +350,7 @@ class TestSquare_display(unittest.TestCase):
         sqr = Square(4, 6, 2, 12)
         with self.assertRaises(TypeError):
             sqr.display(1)
+
 
 class TestSquare_string(unittest.TestCase):
     '''test string representation'''
@@ -380,6 +386,7 @@ class TestSquare_string(unittest.TestCase):
         sq = Square(4, 6, 2, 12)
         with self.assertRaises(TypeError):
             sq.__str__(1)
+
 
 class TestSquare_update(unittest.TestCase):
     '''test update function'''
@@ -488,6 +495,7 @@ class TestSquare_update(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "size must be > 0"):
             sq.update(89, -2, 4, -5)
 
+
 class TestSquare_update_kwargs(unittest.TestCase):
     '''test update kwargs function'''
     def update_kwargs_size(self):
@@ -573,6 +581,7 @@ class TestSquare_update_kwargs(unittest.TestCase):
         sq.update(89, b=3, x=4, y=5)
         exp_output = "[Square] (89) 4/5 - 10"
         self.assertEqual(sq.__str__(), exp_output)
+
 
 if __name__ == "__main__":
     unittest.main()

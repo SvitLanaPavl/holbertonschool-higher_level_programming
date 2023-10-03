@@ -8,7 +8,7 @@ import os
 """Unittest classes"""
 
 
-class TestBase(unittest.TestCase):
+class TestBase_init(unittest.TestCase):
     '''The subclass of the TestCase to test Base'''
     def setUp(self):
         Base._Base__nb_objects = 0
@@ -42,12 +42,12 @@ class TestBase(unittest.TestCase):
         self.assertEqual(b1.id, -1)
 
     def test_string_id(self):
-        '''string id''' 
+        '''string id'''
         b1 = Base("Holberton")
         self.assertEqual(b1.id, "Holberton")
         b2 = Base("1")
         self.assertEqual(b2.id, "1")
-    
+
     def test_float_id(self):
         '''float id'''
         b1 = Base(1.1)
@@ -65,8 +65,8 @@ class TestBase(unittest.TestCase):
 
     def test_list_id(self):
         '''bool id'''
-        b1 = Base([1,])
-        self.assertEqual(b1.id, [1,])
+        b1 = Base([1, ])
+        self.assertEqual(b1.id, [1, ])
 
     def test_tuple_id(self):
         '''tuple id'''
@@ -126,8 +126,10 @@ class TestBase(unittest.TestCase):
         base.id = 15
         self.assertEqual(base.id, 15)
 
+
 class TestBase_to_json_string(unittest.TestCase):
     '''Test to json string'''
+
     def test_more_args(self):
         '''test more args'''
         with self.assertRaises(TypeError):
@@ -160,6 +162,7 @@ class TestBase_to_json_string(unittest.TestCase):
         self.assertTrue(type(result_str) is str)
         result_loads = json.loads(result_str)
         self.assertEqual(result_loads, input)
+
 
 class TestBase_from_json_string(unittest.TestCase):
     '''Test from json string'''
@@ -229,8 +232,10 @@ class TestBase_from_json_string(unittest.TestCase):
         json_output = Square.from_json_string(json_input)
         self.assertEqual(input, json_output)
 
+
 class TestBase_save_to_file(unittest.TestCase):
     '''save to file method test'''
+
     @classmethod
     def remove_files(self):
         '''remove created files'''
@@ -265,7 +270,7 @@ class TestBase_save_to_file(unittest.TestCase):
     def test_save_mult_args(self):
         '''save to file no args'''
         with self.assertRaises(TypeError):
-            Rectangle.save_to_file([], 10)    
+            Rectangle.save_to_file([], 10)
 
     def save_rect(self):
         '''save one rectangle'''
@@ -303,6 +308,7 @@ class TestBase_save_to_file(unittest.TestCase):
         with open("Square.json", "r") as f:
             self.assertTrue(len(f.read()) == expected_length)
 
+
 class TestBase_create(unittest.TestCase):
     '''testing create method'''
     def create_rect(self):
@@ -323,6 +329,7 @@ class TestBase_create(unittest.TestCase):
         self.assertEqual("[Square] (4) 2/3 - 2", str(sq2))
         self.assertFalse(sq1 is sq2)
         self.assertIsNot(sq1, sq2)
+
 
 if __name__ == "__main__":
     unittest.main()
