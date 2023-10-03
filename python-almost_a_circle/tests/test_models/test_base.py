@@ -298,15 +298,15 @@ class TestBase_save_to_file(unittest.TestCase):
         with open("Rectangle.json", "r") as f:
             self.assertTrue(len(f.read()) == expected_length)'''
 
-    def tes_two_sqr(self):
-        '''two rectangles'''
-        sq1 = Square(2, 2, 2, 2)
+    '''def test_two_sqr(self):
+        two rectangles'''
+    '''sq1 = Square(2, 2, 2, 2)
         sq2 = Square(3, 3, 3, 3)
         Square.save_to_file([sq1, sq2])
         expected_length = len(json.dumps(sq1.to_dictionary())) +\
             len(json.dumps(sq2.to_dictionary()))
         with open("Square.json", "r") as f:
-            self.assertTrue(len(f.read()) == expected_length)
+            self.assertTrue(len(f.read()) == expected_length)'''
 
 
 class TestBase_create(unittest.TestCase):

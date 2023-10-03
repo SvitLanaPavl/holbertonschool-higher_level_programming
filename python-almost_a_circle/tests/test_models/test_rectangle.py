@@ -757,12 +757,12 @@ class TestRectangle_update_kwargs(unittest.TestCase):
         exp_output = "[Rectangle] (89) 10/10 - 10/10"
         self.assertEqual(recn.__str__(), exp_output)
 
-    '''def test_update_kwargs_and_args_smwrkeys(self):
-        update with some wrong keys'''
-    '''recn = Rectangle(10, 10, 10, 10, 10)
+    def test_update_kwargs_and_args_smwrkeys(self):
+        '''update with some wrong keys'''
+        recn = Rectangle(10, 10, 10, 10, 10)
         recn.update(89, a=2, b=3, x=4, y=5)
-        exp_output = "[Rectangle] (89) 4/5 - 10/10"
-        self.assertEqual(recn.__str__(), exp_output)'''
+        exp_output = "[Rectangle] (89) 10/10 - 10/10"
+        self.assertEqual(recn.__str__(), exp_output)
 
 
 if __name__ == "__main__":
