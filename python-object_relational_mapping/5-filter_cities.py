@@ -19,5 +19,5 @@ if __name__ == '__main__':
             '''
     cursor.execute(query)
     cities = cursor.fetchall()
-    cities = [item[1] for item in cities if item[1] == argv[4]]
+    cities = [item[2] for item in cities if item[1] == argv[4]]
     print(', '.join(cities))
