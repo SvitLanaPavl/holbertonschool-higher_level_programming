@@ -7,9 +7,9 @@ from sys import argv
 
 
 if __name__ == '__main__':
-    engine = create_engine('mysql+msqldb://{}:{}@localhost:3306/{}'
-                           .format(argv[1], argv[2], argv[3]), pool_pre_ping=True)
+    engine = create_engine(f'mysql+msqldb://{argv[1]}:{argv[2]}\
+                           @localhost:3306/{argv[3]}', pool_pre_ping=True)
     Session = sessionmaker(bind=engine)
     session = Session()
     for state in session.query(State).order_by(State.id):
-        print('{}: {}'.format(state.id, state.name))
+        print(f'{state.id}: {state.name}')
