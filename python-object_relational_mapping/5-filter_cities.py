@@ -18,9 +18,6 @@ if __name__ == '__main__':
             ORDER BY cities.id ASC;
             '''
     cursor.execute(query)
-    states = cursor.fetchall()
-    result = ''
-    for item in states:
-        if item[4] == argv[4]:
-            result += item[0] + ', '
-            print(result[0:-2:])
+    cities = cursor.fetchall()
+    cities = [item[1] for item in cities if item[4] == argv[4]]
+    print(', '.join(cities))
