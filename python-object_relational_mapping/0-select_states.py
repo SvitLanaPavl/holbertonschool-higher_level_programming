@@ -16,4 +16,3 @@ if __name__ == 'main':
     for state in states:
         print(state)
     cursor.close()
-    db.close()
