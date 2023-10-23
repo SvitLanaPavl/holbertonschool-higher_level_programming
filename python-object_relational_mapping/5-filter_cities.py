@@ -21,4 +21,5 @@ if __name__ == '__main__':
     states = cursor.fetchall()
     for item in states:
         if item[4] == argv[4]:
-            print(item)
+            item += item[0] + ', '
+            print(item[0:-2:])
