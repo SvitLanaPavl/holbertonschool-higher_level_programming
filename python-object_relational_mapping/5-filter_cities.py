@@ -19,7 +19,8 @@ if __name__ == '__main__':
             '''
     cursor.execute(query)
     states = cursor.fetchall()
+    result = ''
     for item in states:
         if item[4] == argv[4]:
-            item += item[0] + ', '
-            print(item[0:-2:])
+            result += item[0] + ', '
+            print(result[0:-2:])
