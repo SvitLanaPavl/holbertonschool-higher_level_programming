@@ -20,5 +20,5 @@ if __name__ == '__main__':
     cursor.execute(query)
     states = cursor.fetchall()
     for item in states:
-        if item[1] == argv[4]:
+        if item[4] == argv[4]:
             print(item)
