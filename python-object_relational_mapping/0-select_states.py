@@ -5,7 +5,7 @@ import MySQLdb
 from sys import argv
 
 
-def list_states():
+if __name__ == 'main':
     '''Lists all states from the database hbtn_0e_0_usa'''
 
     db = MySQLdb.connect(host='localhost', port=3306, user=argv[1],
@@ -17,6 +17,3 @@ def list_states():
         print(state)
     cursor.close()
     db.close()
-
-if __name__ == 'main':
-    list_states()
