@@ -14,10 +14,8 @@ request(url, (error, _, body) => {
         infoSet[userId]++;
       }
     });
-    for (const userId in infoSet) {
-      if (infoSet[userId] > 0) {
-        console.log(`"${userId}": ${infoSet[userId]}`);
-      }
-    }
+    Object.keys(infoSet).forEach(userId => {
+      console.log(`${userId}: ${infoSet[userId]}`);
+    });
   }
 });
