@@ -8,14 +8,13 @@ request(url, (error, _, body) => {
     const tasks = JSON.parse(body);
     const infoSet = {};
     tasks.forEach(task => {
-      if (task.completed) {
-        const userId = task.userID;
-        infoSet[userId] = (infoSet[userId] || 0);
-        infoSet[userId]++;
+      const userId = task.userID;
+      if (task.completed && infoSet[userId] === undefined) {
+        infoSet[userId] = 1;
+      } else if (task.completed) {
+        infoSet[userId] += 1;
       }
     });
-    Object.keys(infoSet).forEach(userId => {
-      console.log(`${userId}: ${infoSet[userId]}`);
-    });
+    console.log(infoSet);
   }
 });
