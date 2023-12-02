@@ -10,7 +10,7 @@ request(url, (error, _, body) => {
     tasks.forEach(task => {
       const userId = task.userID;
       if (task.completed && infoSet[userId] === undefined) {
-        infoSet[userId] = 1;
+        infoSet[userId] = 0;
       } else if (task.completed) {
         infoSet[userId] += 1;
       }
