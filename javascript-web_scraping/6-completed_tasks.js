@@ -8,7 +8,7 @@ request(url, (error, _, body) => {
     const tasks = JSON.parse(body);
     const infoSet = {};
     tasks.forEach(task => {
-      const userId = task.userID;
+      const userId = task.userId;
       if (task.completed) {
         if (userId in infoSet) {
           infoSet[userId] += 1;
